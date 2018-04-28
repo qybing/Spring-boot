@@ -1,0 +1,28 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jovan.mapper.UserMapper">
+    <insert id="insert">
+        insert into t_user(name, password, phone) VALUES(#{name}, #{password}, #{phone})
+    </insert>
+
+    <insert id="insert1">
+        insert into t_user(name, password, phone) VALUES(#{name}, #{password}, #{phone})
+    </insert>
+
+    <delete id="Delete">
+        DELETE FROM T_USER where id=#{id}
+    </delete>
+
+    <update id="update">
+        UPDATE T_USER SET NAME = #{name} WHERE ID = #{id}
+    </update>
+
+    <select id="findAllUser" resultType="User">
+        SELECT * FROM T_USER
+    </select>
+
+    <select id="findUserByPhone" resultType="User">
+        SELECT * FROM T_USER WHERE PHONE = #{phone}
+    </select>
+</mapper>
