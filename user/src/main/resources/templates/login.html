@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>用户登录</h1>
+
+<form method="POST" action="/login">
+    账号：<input type="text" id="user_id" name="acc" placeholder="请输入你的账号">
+    <br>
+    密码：<input type="password" id="user_pwd" name="pwd" placeholder="请输入你的密码">
+    <br><br>
+    &nbsp &nbsp<button type="submit">登录</button>
+    <br><br>
+    <p th:text="${messages}"></p>
+    <img th:src="@{/213250K62-0.jpg}">
+</form>
+<button type="button" value="注册">
+    <a th:href="@{/getvar?id=30000}" >注册</a>
+</button>
+
+</body>
+</html>
