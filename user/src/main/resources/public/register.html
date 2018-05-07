@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <script type="text/javascript" th:src="@{/jquery-3.2.1.min.js}"></script>
+    <h1>用户注册</h1>
+
+</head>
+<body>
+
+
+
+
+<form method="POST" action="/login" id="adminform">
+    账号：<input type="text" id="user_id" name="acc" placeholder="请输入你的账号">
+    <br>
+    密码：<input type="password" id="user_pwd" name="pwd" placeholder="请输入你的密码">
+    <br><br>
+
+
+    <!--<br>${error}<br>-->
+    <!--<input type="submit" value="验证" onclick="return formsubmitclick()"><br>-->
+
+    &nbsp &nbsp<button type="submit" >注册</button>
+
+    <!--<img th:src="@{/213250K62-0.jpg}">-->
+</form>
+
+
+</body>
+</html>

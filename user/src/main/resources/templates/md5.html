@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>md5加密</title>
+    <script type="text/ecmascript" th:src="@{/MD5.js}"></script>
+    <script type="text/javascript" th:src="@{/jquery-3.2.1.min.js}"></script>
+</head>
+<body>
+<h1>用户登录</h1>
+
+    <form method="POST" action="/login">
+        账号：<input type="text" id="user_id" name="acc" placeholder="请输入你的账号">
+        <br>
+        密码：<input type="password" id="user_pwd" name="pwd" placeholder="请输入你的密码">
+        <br><br>
+        &nbsp &nbsp<button type="submit">登录</button>
+        <br><br>
+    </form>
+<script type="text/javascript">
+        $("button").click(function(){
+            // noinspection JSAnnotator
+            var hash = hex_md5(document.getElementById("user_pwd").value);
+            var value=hash;
+            document.getElementById("user_pwd").value=value;
+            alert($("#user_pwd").val())
+            // var acc = $("#user_id");
+            // $("#user_pwd").attr("value","")
+            // $("#user_pwd").attr("value","123456")
+            // window.location.href("/login?acc="+acc+"&pwd="+pwd)
+        });
+
+
+</script>
+
+</body>
+</html>

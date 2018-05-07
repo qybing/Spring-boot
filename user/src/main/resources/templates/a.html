@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        window.onload = initAll;
+        function initAll() {
+            document.getElementsByTagName("form")[0].onsubmit = change;
+        }//按下提交按钮后触发change函数
+        function change() {
+            var inText = document.getElementById("intext").value;
+//以inText变量保存用户输入的数值，outText变量保存修改后的数值。
+            var outText = "";
+            for(var i=0;i<inText.length;i++) {
+                outText += String.fromCharCode(inText.charCodeAt(i)+1);
+            }
+            document.getElementById("textarea").value = outText;
+            return false;
+        }
+    </script>
+</head>
+<body>
+<center>
+    <form action="#">
+        字符：<input id="intext" type=text name="cmd" size=60><br>
+        <br/>
+        <input type=submit value="Let's go">
+    </form>
+    <br/>
+    <textarea readonly cols=80 rows=20 id="textarea"> </textarea>
+</center>
+</body>
+</html>
