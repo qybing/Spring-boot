@@ -74,7 +74,7 @@ public class SpringbootMybatisDemo2ApplicationTests {
     public void test5() {
         Integer page=1;
         Integer rows=1;
-
+          // page:页数 rows:每一页显示的记录数
         PageHelper.startPage(page, rows);
         List<User> user = userMapper.findAllUser();
         for (User u : user) {
