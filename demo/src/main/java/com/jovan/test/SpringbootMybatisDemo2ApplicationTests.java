@@ -1,5 +1,9 @@
 package com.jovan.test;
 
+/*import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;*/
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jovan.bean.User;
 import com.jovan.mapper.UserMapper;
 import com.jovan.service.UserService;
@@ -68,15 +72,22 @@ public class SpringbootMybatisDemo2ApplicationTests {
     //查询所有
     @Test
     public void test5() {
-        List<User> user = userMapper.findAllUser();
+        Integer page=1;
+        Integer rows=1;
 
+        PageHelper.startPage(page, rows);
+        List<User> user = userMapper.findAllUser();
         for (User u : user) {
             System.out.println("名字为:" + u.getName() + "  密码为:" + u.getPassword() + "  电话:" + u.getPhone());
         }
-//        List<User> user1= userMapper.findAllUser();
-//        for(User u : user1){
-//            System.out.println("名字为:"+u.getName()+"  密码为:"+u.getPassword()+"  电话:"+u.getPhone());
-//        }
+        System.out.println("-----------------------------------------------------");
+
+        PageInfo pageInfo = new PageInfo(user,3);
+        System.out.println(pageInfo);
+        System.out.println("这是什么"+pageInfo.getList());
+        for (User u : user) {
+            System.out.println("名字为:" + u.getName() + "  密码为:" + u.getPassword() + "  电话:" + u.getPhone());
+        }
     }
 
 }
