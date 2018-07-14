@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>资源平台后台管理系统</title>
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="js/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="css/plugins/iCheck/custom.css">
+    <link rel="stylesheet" href="css/plugins/jqgrid/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/demo/laypage.css">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 form">
+            <form action="" class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="资源名称">
+                </div>
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value="">小学</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value="">一年级</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value="">语文</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value="">人教版</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value="">上册</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value="">资源格式</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="" id="" class="form-control">
+                        <option value="">来源</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-search-plus"></i>查询</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-12 col-md-12 upload-source">
+            <button class="btn btn-primary " data-toggle="modal" data-target="#uplaod">
+                <i class="fa fa-upload"></i>
+                <span>资源上传</span>
+            </button>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <table class="table table-responsive table-bordered text-center source-table">
+                <thead>
+                <tr class="text-center">
+                    <td><input type="checkbox" class="i-checks"></td>
+                    <th>资源名称</th>
+                    <th>资源等级</th>
+                    <th>类别</th>
+                    <th>分类</th>
+                    <th>资源格式</th>
+                    <th>资源大小</th>
+                    <th>浏览数</th>
+                    <th>收藏数</th>
+                    <th>分享单位/个人</th>
+                    <th>发布时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="checkbox" class="i-checks"></td>
+                    <td data-toggle="modal" data-target="#viewFile"><i class="fa fa-file-powerpoint-o"></i> <span>《小鸭子课堂》</span></td>
+                    <td>精品</td>
+                    <td>教材</td>
+                    <td>小学-语文-人教版-一年级-上册</td>
+                    <td>word</td>
+                    <td>17kb</td>
+                    <td>6000</td>
+                    <td>6000</td>
+                    <td>第三方</td>
+                    <td>2018-07-09</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="i-checks"></td>
+                    <td  data-toggle="modal" data-target="#viewFile" ><i class="fa fa-file-video-o"></i> <span>《小鸭子课堂》</span></td>
+                    <td>精品</td>
+                    <td>教材</td>
+                    <td>小学-语文-人教版-一年级-上册</td>
+                    <td>word</td>
+                    <td>17kb</td>
+                    <td>6000</td>
+                    <td>6000</td>
+                    <td>第三方</td>
+                    <td>2018-07-09</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="i-checks"></td>
+                    <td data-toggle="modal" data-target="#viewFile" ><i class="fa fa-file-word-o"></i> <span>《小鸭子课堂》</span></td>
+                    <td>精品</td>
+                    <td>教材</td>
+                    <td>小学-语文-人教版-一年级-上册</td>
+                    <td>word</td>
+                    <td>17kb</td>
+                    <td>6000</td>
+                    <td>6000</td>
+                    <td>第三方</td>
+                    <td>2018-07-09</td>
+                </tr>
+                <tr>
+                    <td  data-toggle="modal" data-target="#viewFile" ><input type="checkbox" class="i-checks"></td>
+                    <td><i class="fa fa-file-archive-o"></i> <span>《小鸭子课堂》</span></td>
+                    <td>精品</td>
+                    <td>教材</td>
+                    <td>小学-语文-人教版-一年级-上册</td>
+                    <td>word</td>
+                    <td>17kb</td>
+                    <td>6000</td>
+                    <td>6000</td>
+                    <td>第三方</td>
+                    <td>2018-07-09</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div id="test">
+
+            </div>
+
+
+           <!-- <div class="jqGrid_wrapper">
+                <table id="table_list_2" class="table table-responsive table-bordered text-center"></table>
+                <div id="pager_list_2"></div>
+            </div>-->
+        </div>
+    </div>
+</div>
+<!--资源上传弹窗-->
+<div class="modal fadeIn " id="uplaod">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">资源上传</h4>
+            </div>
+            <form action="" class="from-edit">
+                <div class="modal-body form-horizontal">
+                    <!--上传文件-->
+                    <div id="uploader" class="wu-example">
+                        <div class="queueList">
+                            <div id="dndArea" class="placeholder">
+                                <div id="filePicker"></div>
+                                <p>或将照片拖到这里，单次最多可选300张</p>
+                            </div>
+                        </div>
+                        <div class="statusBar" style="display:none;">
+                            <div class="progress">
+                                <span class="text">0%</span> <span class="percentage"></span>
+                            </div>
+                            <div class="info"></div>
+                            <div class="btns">
+                                <div id="filePicker2"></div>
+                                <div class="uploadBtn">开始上传</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--编辑文件-->
+                   <div class="row">
+                       <div  class="form-group">
+                           <div class="col-sm-3 col-md-3 col-xs-4 edit-title"><i class="text-danger">*</i> 编辑形式:</div>
+                           <div class="col-sm-6 col-md-9 col-xs-8">
+                               <label class="pull-left "><input type="radio" class="i-checks" name="edit">统一编辑</label>
+                               <label class="pull-left "><input type="radio" class="i-checks" name="edit">单独编辑</label>
+                           </div>
+                       </div>
+                       <div  class="form-group">
+                           <div class="col-sm-3 col-xs-4 edit-title"><i class="text-danger">*</i>资源种类:</div>
+                           <div class="col-sm-6 col-xs-8">
+                               <label class="pull-left "><input type="radio" class="i-checks" name="class"> 课件</label>
+                               <label class="pull-left  "><input type="radio" class="i-checks" name="class"> 教材</label>
+                               <label class="pull-left  "><input type="radio" class="i-checks" name="class"> 教案</label>
+                           </div>
+                       </div>
+                       <div  class="form-group">
+                           <div class="col-sm-3 col-xs-4 edit-title"><i class="text-danger">*</i>具体归属:</div>
+                           <div class="col-sm-9 col-xs-8 form-inline">
+                               <select name="" class="form-control" id="">
+                                   <option value="">text1</option>
+                               </select>
+                               <select name="" class="form-control" id="">
+                                   <option value="">text1</option>
+                               </select>
+                               <select name="" class="form-control" id="">
+                                   <option value="">text1</option>
+                               </select>
+                               <select name="" class="form-control" id="">
+                                   <option value="">text1</option>
+                               </select>
+                               <select name="" class="form-control" id="">
+                                   <option value="">text1</option>
+                               </select>
+
+                           </div>
+                       </div>
+                       <div  class="form-group">
+                           <div class="col-sm-3 col-xs-4 edit-title"><i class="text-danger">*</i> 资源来源:</div>
+                           <div class="col-sm-6 col-xs-8">
+                               <label class="pull-left  "><input type="radio" class="i-checks" name="source"> 个人分享</label>
+                               <label class="pull-left  "><input type="radio" class="i-checks" name="source"> 校本分享</label>
+                               <label class="pull-left  "><input type="radio" class="i-checks" name="source"> 第三方机构</label>
+                           </div>
+                       </div>
+                       <div  class="form-group">
+                           <div class="col-sm-3 col-xs-4 edit-title">关键字标签:</div>
+                           <div class="col-sm-6 col-xs-8">
+                               <input type="text" class="form-control">
+                           </div>
+                       </div>
+                       <div  class="form-group">
+                           <div class="col-sm-3 col-xs-4 edit-title">资源描述:</div>
+                           <div class="col-sm-6 col-xs-8">
+                               <textarea name="" class="form-control" id="" cols="30" rows="10" style="resize: none"></textarea>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+                <div class="modal-footer" style="overflow:hidden;">
+                    <div class="pull-right">
+                        <button class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button class="btn btn-success" type="submit">确定</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--文件预览-->
+<div class="modal fadeIn" id="viewFile" style="position: absolute;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">资源详情页</h4>
+            </div>
+            <div class="modal-body">
+                <div class="source-details">
+                    <div class="hd">
+                        <h2><i class="fa fa-file-word-o"></i>七年级数学代数的教学反思</h2>
+                        <p class="colm-1">
+                            来源: <span>第三方机构</span>|文件大小: <span>16k</span></p>
+                        <p class="colm-2">
+                            <span><i class="fa fa-user"></i>第三方机构</span>
+                            <span><i class="fa fa-upload"></i>2017-10-23</span>
+                            <span><i class="fa fa-eye"></i>10000</span>
+                            <span><i class="fa fa-folder-open"></i>10000</span>
+                            <span><i class="fa fa-download"></i>10000</span>
+                        </p>
+                    </div>
+                    <div class="bd">
+                        <div class="hd-box">
+                            <span class="full-screen"><i class="fa fa-expand"></i></span>
+                            <div class="">
+                                <img src="img/u1332.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="js/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
+<script src="js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="js/plugins/webuploader/webuploader.min.js"></script>
+<script src="js/plugins/layui/layui.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".i-checks").iCheck({
+            checkboxClass:'icheckbox_square-blue',
+            radioClass: "iradio_square-blue",
+
+        })
+        //分页
+        layui.use(['table'], function(){
+            var table = layui.table;
+            var data={"code":0,"msg":"","count":1000,"data":[
+                {
+                    "name":"《小鸭子课堂》",
+                    "grade":"精品",
+                    "category":"教材",
+                    "classification":"小学-语文-人教版-一年级-上册",
+                    "format":"word",
+                    "size":"24k",
+                    "views":6000,
+                    "collection":"500",
+                    "share":"第三方",
+                    "date":"2017-08-09"
+                },{
+                        "name":"《小鸭子课堂》",
+                        "grade":"精品",
+                        "category":"教材",
+                        "classification":"小学-语文-人教版-一年级-上册",
+                        "format":"zip",
+                        "size":"24k",
+                        "views":6000,
+                        "collection":"500",
+                        "share":"第三方",
+                        "date":"2017-08-09"
+                    },{
+                        "name":"《小鸭子课堂》",
+                        "grade":"精品",
+                        "category":"教材",
+                        "classification":"小学-语文-人教版-一年级-上册",
+                        "format":"ppt",
+                        "size":"24k",
+                        "views":6000,
+                        "collection":"500",
+                        "share":"第三方",
+                        "date":"2017-08-09"
+                    }]}
+            table.render({
+                elem: '#test'
+                ,data:data.data
+                ,cols: [[
+                    {type:'checkbox'}
+                    ,{field:'name', width:200, title: '资源名称',templet:function (d) {
+                        switch (d.format){
+                            case "word":
+                                return '<span data-toggle="modal" data-target="#viewFile"><i class="fa fa-file-word-o"></i> '+d.name+'</span>'
+                            break;
+                            case "ppt":
+                                return '<span data-toggle="modal" data-target="#viewFile"><i class="fa fa-file-powerpoint-o"></i> '+d.name+'</span>'
+                                break;
+                            case "zip":
+                                return '<span data-toggle="modal" data-target="#viewFile"><i class="fa fa-file-archive-o"></i> '+d.name+'</span>'
+                                break;
+                            case "video":
+                                return '<span data-toggle="modal" data-target="#viewFile"><i class="fa fa-file-video-o"></i> '+d.name+'</span>'
+                                break;
+                            default:
+                                return '<span data-toggle="modal" data-target="#viewFile"><i class="fa fa-files-o"></i> '+d.name+'</span>'
+                        }
+
+                        }}
+                    ,{field:'grade', width:80, title: '资源等级', sort: true}
+                    ,{field:'category', width:80, title: '类别'}
+                    ,{field:'classification',minWidth: 120, title: '分类', }
+                    ,{field:'format', width:100, title: '资源格式', sort: true}
+                    ,{field:'size', width:100, title: '资源大小', sort: true}
+                    ,{field:'views', width:100, title: '浏览数', sort: true}
+                    ,{field:'collection', width:100, title: '收藏数', sort: true}
+                    ,{field:'share', width:135, title: '分享单位/个人', sort: true}
+                    ,{field:'date', width:135, title: '发布时间', sort: true}
+                ]]
+                ,page: true
+            });
+        });
+
+
+
+        //数据表格加载
+       /* $(document).ready(function () {
+            $.jgrid.defaults.styleUI = "Bootstrap";
+            var mydata = [{
+                name: "小鸭子课堂",
+                grade: "精品",
+                category: "教材",
+                classification: "小学/语文/人教版/一年级/上册",
+                format: "world",
+                size: "17k",
+                views:"6000",
+                browse:"6000",
+                collection:"第三方",
+                date:"2017-08-09"
+            }]
+            function formats(){
+
+            }
+            $("#table_list_2").jqGrid({
+                data: mydata,
+                datatype: "local",
+                height: 450,
+                autowidth: true,
+                shrinkToFit: true,
+                rowNum: 20,
+                rowList: [10, 20, 30],
+                colNames: ["资源名称", "资源等级", "类别", "分类", "资源格式", "资源大小", "浏览数","收藏数","分享单位/个人","发布时间"],
+                colModel: [
+                    {
+                        name: "name",
+                        index: "name",
+                        editable: true,
+                        sorttype: "string",
+                        search: true,
+                        formatter: formats,
+                    },
+                    {
+                        name: "grade",
+                        index: "grade",
+                        editable: true,
+
+                        sorttype: "string",
+                        search: true},
+                    {
+                        name: "category",
+                        index: "category",
+                        editable: true,
+
+                        sorttype: "string",
+                        search: true},
+                    {
+                        name: "classification",
+                        index: "classification",
+                        width:120,
+                        editable: true,
+
+                        sorttype: "string",
+                        search: true},
+                    {
+                        name: "format",
+                        index: "format",
+                        editable: true,
+
+                        sorttype: "string",
+                        search: true},
+                    {
+                        name: "size",
+                        index: "size",
+                        editable: true,
+
+                        sorttype: "string",
+                        search: true},
+                    {
+                        name: "views",
+                        index: "views",
+                        editable: true,
+
+                        sorttype: "string",
+                        search: true},
+                    {
+                        name: "browse",
+                        index: "browse",
+                        editable: true,
+                        sorttype: "string",
+                        search: true},
+                    {
+                        name: "collection",
+                        index: "collection",
+                        editable: true,
+                        sorttype: "string",
+                        search: true},
+                    {
+                        name: "date",
+                        index: "date",
+                        editable: true,
+
+                        sorttype: "string",
+                        search: true},
+                ],
+                pager: "#pager_list_2",
+                viewrecords: true,
+                add: true,
+                edit: true,
+                addtext: "Add",
+                edittext: "Edit",
+                hidegrid: false
+            });
+            $("#table_list_2").setSelection(4, true);
+            $("#table_list_2").jqGrid("navGrid", "#pager_list_2", {
+                edit: true,
+                add: true,
+                del: true,
+                search: true
+            }, {height: 200, reloadAfterSubmit: true});
+            $(window).bind("resize", function () {
+                var width = $(".jqGrid_wrapper").width();
+                $("#table_list_2").setGridWidth(width)
+            })
+        });*/
+
+
+
+
+
+    })
+    /*====文件预览===*/
+    $("#viewFile").on("show.bs.modal",function(){
+        $(function () {
+            var w=0;
+            $(window).on("resize load",function () {
+                w=$(window).width()
+            })
+            var full=false
+            $(".full-screen").click(function() {
+                if(!full){
+                    //全屏
+                    $(".source-details .bd").css({
+                        position:'fixed',
+                        left:0,
+                        top:0,
+                    })
+                    $(this).html('<i class="fa fa-compress"></i>');
+                    full=true
+                }else{
+                    $(".source-details .bd").css({
+                        position:'static'
+                    })
+                    $(this).html('<i class="fa fa-expand"></i>');
+                    full=false
+                }
+
+            })
+        })
+
+
+
+
+
+
+
+
+    })
+
+
+/*===资源上传====*/
+    $("#uplaod").on("show.bs.modal",function(){
+        $(function() {
+            function e(e) {
+                var a = o('<li id="' + e.id + '"><p class="title">' + e.name + '</p><p class="imgWrap"></p><p class="progress"><span></span></p></li>'),
+                    s = o('<div class="file-panel"><span class="cancel">删除</span><span class="rotateRight">向右旋转</span><span class="rotateLeft">向左旋转</span></div>').appendTo(a),
+                    i = a.find("p.progress span"),
+                    t = a.find("p.imgWrap"),
+                    r = o('<p class="error"></p>'),
+                    d = function(e) {
+                        switch (e) {
+                            case "exceed_size":
+                                text = "文件大小超出";
+                                break;
+                            case "interrupt":
+                                text = "上传暂停";
+                                break;
+                            default:
+                                text = "上传失败，请重试"
+                        }
+                        r.text(text).appendTo(a)
+                    };
+                "invalid" === e.getStatus() ? d(e.statusText) : (t.text("预览中"), n.makeThumb(e,
+                    function(e, a) {
+                        if (e) return void t.text("不能预览");
+                        var s = o('<img src="' + a + '">');
+                        t.empty().append(s)
+                    },
+                    v, b), w[e.id] = [e.size, 0], e.rotation = 0),
+                    e.on("statuschange",
+                        function(t, n) {
+                            "progress" === n ? i.hide().width(0) : "queued" === n && (a.off("mouseenter mouseleave"), s.remove()),
+                                "error" === t || "invalid" === t ? (console.log(e.statusText), d(e.statusText), w[e.id][1] = 1) : "interrupt" === t ? d("interrupt") : "queued" === t ? w[e.id][1] = 0 : "progress" === t ? (r.remove(), i.css("display", "block")) : "complete" === t && a.append('<span class="success"></span>'),
+                                a.removeClass("state-" + n).addClass("state-" + t)
+                        }),
+                    a.on("mouseenter",
+                        function() {
+                            s.stop().animate({
+                                height: 30
+                            })
+                        }),
+                    a.on("mouseleave",
+                        function() {
+                            s.stop().animate({
+                                height: 0
+                            })
+                        }),
+                    s.on("click", "span",
+                        function() {
+                            var a, s = o(this).index();
+                            switch (s) {
+                                case 0:
+                                    return void n.removeFile(e);
+                                case 1:
+                                    e.rotation += 90;
+                                    break;
+                                case 2:
+                                    e.rotation -= 90
+                            }
+                            x ? (a = "rotate(" + e.rotation + "deg)", t.css({
+                                "-webkit-transform": a,
+                                "-mos-transform": a,
+                                "-o-transform": a,
+                                transform: a
+                            })) : t.css("filter", "progid:DXImageTransform.Microsoft.BasicImage(rotation=" + ~~ (e.rotation / 90 % 4 + 4) % 4 + ")")
+                        }),
+                    a.appendTo(l)
+            }
+            function a(e) {
+                var a = o("#" + e.id);
+                delete w[e.id],
+                    s(),
+                    a.off().find(".file-panel").off().end().remove()
+            }
+            function s() {
+                var e, a = 0,
+                    s = 0,
+                    t = f.children();
+                o.each(w,
+                    function(e, i) {
+                        s += i[0],
+                            a += i[0] * i[1]
+                    }),
+                    e = s ? a / s: 0,
+                    t.eq(0).text(Math.round(100 * e) + "%"),
+                    t.eq(1).css("width", Math.round(100 * e) + "%"),
+                    i()
+            }
+            function i() {
+                var e, a = "";
+                "ready" === k ? a = "选中" + m + "张图片，共" + WebUploader.formatSize(h) + "。": "confirm" === k ? (e = n.getStats(), e.uploadFailNum && (a = "已成功上传" + e.successNum + "张照片至XX相册，" + e.uploadFailNum + '张照片上传失败，<a class="retry" href="#">重新上传</a>失败图片或<a class="ignore" href="#">忽略</a>')) : (e = n.getStats(), a = "共" + m + "张（" + WebUploader.formatSize(h) + "），已上传" + e.successNum + "张", e.uploadFailNum && (a += "，失败" + e.uploadFailNum + "张")),
+                    p.html(a)
+            }
+            function t(e) {
+                var a;
+                if (e !== k) {
+                    switch (c.removeClass("state-" + k), c.addClass("state-" + e), k = e) {
+                        case "pedding":
+                            u.removeClass("element-invisible"),
+                                l.parent().removeClass("filled"),
+                                l.hide(),
+                                d.addClass("element-invisible"),
+                                n.refresh();
+                            break;
+                        case "ready":
+                            u.addClass("element-invisible"),
+                                o("#filePicker2").removeClass("element-invisible"),
+                                l.parent().addClass("filled"),
+                                l.show(),
+                                d.removeClass("element-invisible"),
+                                n.refresh();
+                            break;
+                        case "uploading":
+                            o("#filePicker2").addClass("element-invisible"),
+                                f.show(),
+                                c.text("暂停上传");
+                            break;
+                        case "paused":
+                            f.show(),
+                                c.text("继续上传");
+                            break;
+                        case "confirm":
+                            if (f.hide(), c.text("开始上传").addClass("disabled"), a = n.getStats(), a.successNum && !a.uploadFailNum) return void t("finish");
+                            break;
+                        case "finish":
+                            a = n.getStats(),
+                                a.successNum ? alert("上传成功") : (k = "done", location.reload())
+                    }
+                    i()
+                }
+            }
+            var n, o = jQuery,
+                r = o("#uploader"),
+                l = o('<ul class="filelist"></ul>').appendTo(r.find(".queueList")),
+                d = r.find(".statusBar"),
+                p = d.find(".info"),
+                c = r.find(".uploadBtn"),
+                u = r.find(".placeholder"),
+                f = d.find(".progress").hide(),
+                m = 0,
+                h = 0,
+                g = window.devicePixelRatio || 1,
+                v = 110 * g,
+                b = 110 * g,
+                k = "pedding",
+                w = {},
+                x = function() {
+                    var e = document.createElement("p").style,
+                        a = "transition" in e || "WebkitTransition" in e || "MozTransition" in e || "msTransition" in e || "OTransition" in e;
+                    return e = null,
+                        a
+                } ();
+            if (!WebUploader.Uploader.support()) throw alert("Web Uploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器"),
+                new Error("WebUploader does not support the browser you are using.");
+            n = WebUploader.create({
+                pick: {
+                    id: "#filePicker",
+                    label: "点击选择图片"
+                },
+                dnd: "#uploader .queueList",
+                paste: document.body,
+                accept: {
+                    title: "Images",
+                    extensions: "gif,jpg,jpeg,bmp,png",
+                    mimeTypes: "image/*"
+                },
+                swf:  "/Uploader.swf",
+                disableGlobalDnd: !0,
+                chunked: !0,
+                server: "",
+                fileNumLimit: 300,
+                fileSizeLimit: 5242880,
+                fileSingleSizeLimit: 1048576
+            }),
+                n.addButton({
+                    id: "#filePicker2",
+                    label: "继续添加"
+                }),
+                n.onUploadProgress = function(e, a) {
+                    var i = o("#" + e.id),
+                        t = i.find(".progress span");
+                    t.css("width", 100 * a + "%"),
+                        w[e.id][1] = a,
+                        s()
+                },
+                n.onFileQueued = function(a) {
+                    m++,
+                        h += a.size,
+                    1 === m && (u.addClass("element-invisible"), d.show()),
+                        e(a),
+                        t("ready"),
+                        s()
+                },
+                n.onFileDequeued = function(e) {
+                    m--,
+                        h -= e.size,
+                    m || t("pedding"),
+                        a(e),
+                        s()
+                },
+                n.on("all",
+                    function(e) {
+                        switch (e) {
+                            case "uploadFinished":
+                                t("confirm");
+                                break;
+                            case "startUpload":
+                                t("uploading");
+                                break;
+                            case "stopUpload":
+                                t("paused")
+                        }
+                    }),
+                n.onError = function(e) {
+                    alert("Eroor: " + e)
+                },
+                c.on("click",
+                    function() {
+                        return o(this).hasClass("disabled") ? !1 : void("ready" === k ? n.upload() : "paused" === k ? n.upload() : "uploading" === k && n.stop())
+                    }),
+                p.on("click", ".retry",
+                    function() {
+                        n.retry()
+                    }),
+                p.on("click", ".ignore",
+                    function() {
+                        alert("todo")
+                    }),
+                c.addClass("state-" + k),
+                s()
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    })
+
+
+
+
+</script>
+</html>

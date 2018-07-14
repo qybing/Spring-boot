@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.VideoShopMapper" >
+    <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.VideoShop" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="vtype" property="vtype" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="author" property="author" jdbcType="VARCHAR" />
+        <result column="desp" property="desp" jdbcType="VARCHAR" />
+        <result column="front_cover" property="frontCover" jdbcType="VARCHAR" />
+        <result column="resource_url" property="resourceUrl" jdbcType="VARCHAR" />
+        <result column="iscy" property="iscy" jdbcType="BIT" />
+        <result column="nj" property="nj" jdbcType="VARCHAR" />
+        <result column="is_del" property="isDel" jdbcType="BIT" />
+        <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    id, vtype,title,author,desp,front_cover,resource_url,iscy,nj,is_del,create_time
+  </sql>
+    <insert id="insert" parameterType="com.tiye.IntelligentClass.model.VideoShop" >
+    insert into
+    video_shop (vtype,title,author,desp,front_cover,resource_url,iscy,nj,is_del,create_time)
+    VALUES (#{vtype},#{title},#{author},#{desp},#{frontCover}, #{resourceUrl},#{iscy},#{nj},#{isDel},NOW())
+  </insert>
+    <delete id="delete" parameterType="long">
+        delete from video_shop where  id=#{id}
+    </delete>
+    <select id="get" resultMap="BaseResultMap" parameterType="long">
+        select  <include refid="Base_Column_List"/>  from video_shop where  id=#{id}
+    </select>
+    <update id="updateDelFlg" >
+        update  video_shop t set t.is_del=#{param2} where  t.id in (#{param1})
+    </update>
+    <update id="update" parameterType="com.tiye.IntelligentClass.model.VideoShop">
+        update  video_shop
+        <set >
+            <if test="vtype != null" >
+                vtype = #{vtype},
+            </if>
+            <if test="author != null" >
+                vtype = #{author},
+            </if>
+            <if test="desp != null" >
+                vtype = #{desp},
+            </if>
+            <if test="frontCover != null" >
+                vtype = #{frontCover},
+            </if>
+            <if test="resourceUrl != null" >
+                vtype = #{resourceUrl},
+            </if>
+            <if test="iscy != null" >
+                vtype = #{iscy},
+            </if>
+            <if test="nj != null" >
+                vtype = #{nj},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <sql id="select_where">
+        where is_del=0
+        <if test="vtype != null and vtype!=''">
+            and  vtype = '${vtype}'
+        </if>
+        <if test="author != null and author!=''">
+            and  author like '%${author}%'
+        </if>
+        <if test="title != null and title!=''">
+            and  title like '%${title}%'
+        </if>
+        <if test="iscy != null and iscy!=''">
+            and  iscy = '${iscy}'
+        </if>
+    </sql>
+    <select id="selectCount" resultType="long">
+        select  count(1) from video_shop
+        <include refid="select_where"/>
+    </select>
+    <select id="select" resultMap="BaseResultMap" >
+        select  <include refid="Base_Column_List"/> from video_shop
+        <include refid="select_where"/>
+    </select>
+
+    <select id="getCyCount" resultType="long" parameterType="string">
+        select  count(1) from video_shop
+        where iscy=1 and  nj like concat('%',#{njDm},'%')
+    </select>
+
+    <select id="getCy" resultMap="BaseResultMap" >
+        select  <include refid="Base_Column_List"/> from video_shop
+        where iscy=1 and nj like '%${param3}%' limit #{param1},#{param2}
+    </select>
+
+    <select id="getTypeCount" resultType="long" >
+        select  count(1) from video_shop
+        where vtype=#{param2} and  nj like concat('%',#{param1},'%')
+    </select>
+    <select id="getByType" resultMap="BaseResultMap" >
+        select  <include refid="Base_Column_List"/> from video_shop
+        where vtype=#{param4} and nj like '%${param3}%' limit #{param1},#{param2}
+    </select>
+</mapper>

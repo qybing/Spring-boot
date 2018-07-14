@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>班级相册</title>
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="js/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="css/plugins/iCheck/custom.css">
+    <link rel="stylesheet" href="css/plugins/jqgrid/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/demo/laypage.css">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+          <form action="" class="form-horizontal" style="width: 300px;margin: 50px auto 0;">
+              <div class="form-group">
+                  <textarea name=""  class="form-control" style="resize: none;" id="demo1" cols="30" rows="10"></textarea>
+              </div>
+              <div class="form-group text-center">
+                  <button id="submit" type="button" class="btn btn-primary btn-lg">提交</button>
+              </div>
+          </form>
+      </div>
+    </div>
+</div>
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="js/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
+<script src="js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="js/plugins/layui/layui.js"></script>
+<script>
+layui.use(['jquery','layer'],function(){
+    var $=layui.jquery,
+        layer=layui.layer;
+   $(document).ready(function(){
+       $.get("back/class/slogan",function(res){
+           console.log(res)
+       });
+
+   })
+
+
+
+
+
+
+})
+
+
+
+</script>
+</html>

@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.18.230:3306/intelligent_class?useUnicode=true&amp;amp;characterEncoding=UTF-8
+    username: root
+    password: Root@123456
+    driver-class-name: com.mysql.jdbc.Driver
+  http:
+      multipart:
+        max-file-size: 100Mb
+        max-request-size: 100Mb
+mybatis:
+  #实体类所做包
+  type-aliases-package: com.tiye.IntelligentClass.model
+  #mapper.xml所在位置
+  mapper-locations: classpath:mappers/*.xml
+mypros:
+  mappPath: /upload/
+  uploadPath: /upload/
+  filePrefix: upload
+
+
+logging:
+  file: /log/intelligentClass.log

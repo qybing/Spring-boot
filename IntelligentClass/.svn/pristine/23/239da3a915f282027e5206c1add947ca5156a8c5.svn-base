@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.SlogansMapper" >
+  <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.Slogans" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="slogans" property="slogans" jdbcType="VARCHAR" />
+    <result column="xx" property="xx" jdbcType="VARCHAR" />
+    <result column="nj" property="nj" jdbcType="VARCHAR" />
+    <result column="bj" property="bj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, slogans, xx, nj, bj
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from class_slogans
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByBj" parameterType="java.lang.String" resultType="java.lang.String">
+     select slogans from class_slogans where bj = #{bj}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from class_slogans
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.tiye.IntelligentClass.model.Slogans" >
+    insert into class_slogans (id, slogans, xx, 
+      nj, bj)
+    values (#{id,jdbcType=BIGINT}, #{slogans,jdbcType=VARCHAR}, #{xx,jdbcType=VARCHAR}, 
+      #{nj,jdbcType=VARCHAR}, #{bj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tiye.IntelligentClass.model.Slogans" >
+    insert into class_slogans
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="slogans != null" >
+        slogans,
+      </if>
+      <if test="xx != null" >
+        xx,
+      </if>
+      <if test="nj != null" >
+        nj,
+      </if>
+      <if test="bj != null" >
+        bj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="slogans != null" >
+        #{slogans,jdbcType=VARCHAR},
+      </if>
+      <if test="xx != null" >
+        #{xx,jdbcType=VARCHAR},
+      </if>
+      <if test="nj != null" >
+        #{nj,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null" >
+        #{bj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tiye.IntelligentClass.model.Slogans" >
+    update class_slogans
+    <set >
+      <if test="slogans != null" >
+        slogans = #{slogans,jdbcType=VARCHAR},
+      </if>
+      <if test="xx != null" >
+        xx = #{xx,jdbcType=VARCHAR},
+      </if>
+      <if test="nj != null" >
+        nj = #{nj,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null" >
+        bj = #{bj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tiye.IntelligentClass.model.Slogans" >
+    update class_slogans
+    set slogans = #{slogans,jdbcType=VARCHAR},
+      xx = #{xx,jdbcType=VARCHAR},
+      nj = #{nj,jdbcType=VARCHAR},
+      bj = #{bj,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateSlogans">
+    update class_slogans set slogans = #{slogans} where bj = #{bj}
+  </update>
+  <!--<insert id="addSlogans">-->
+    <!--insert into class_slogans-->
+  <!--</insert>-->
+</mapper>

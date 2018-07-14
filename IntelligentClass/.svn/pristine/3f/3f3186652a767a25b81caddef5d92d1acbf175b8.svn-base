@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>资源平台后台管理系统</title>
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="js/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="css/plugins/iCheck/custom.css">
+    <link rel="stylesheet" href="css/plugins/jqgrid/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/demo/laypage.css">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 ">
+            <div class="form form-inline">
+                <div class="form-group">
+                    <label class="control-label">类型:</label>
+                    <select name="Resources_type" class="form-control" id="type">
+                        <option value="">全部</option>
+                        <option value="ys">视频资源</option>
+                        <option value="yy">音频资源</option>
+                        <option value="ysdw">有声读物</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">作者:</label>
+                    <input type="text" class="form-control" id="author" placeholder="作者名字">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">标题:</label>
+                    <input type="text" class="form-control" name="stitle" placeholder="标题">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">是否常用:</label>
+                    <select id="iscy" class="form-control">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="button" id="search"><i class="fa fa-search-plus"></i>查询</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+            <button class="btn btn-primary " id="add">
+                <i class="fa fa-upload"></i>
+                <span>新增资源</span>
+            </button>
+            <span class="btnGroup">
+                <button class="btn btn-danger " data-type="deleteMore">
+                <i class="fa fa-trash-o"></i>
+                <span>删除</span>
+            </button>
+            </span>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div id="pTable" style="min-width: 1080px;">
+                <table class="layui-hide" id="layui_table_id" lay-filter="test">
+                </table>
+                <div id="laypage"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/html" id="barDemo">
+        <button class="btn btn-success btn-sm" lay-event="edit">编辑</button>
+        <button class="btn btn-danger btn-sm" lay-event="delete">删除</button>
+    </script>
+
+
+</div>
+<!--资源上传弹窗-->
+<div class="modal fadeIn " id="uplaod">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">资源上传</h4>
+            </div>
+            <div  class="modal-body" >
+                <div  class="form-horizontal" id="uploadFrom1">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">类型:</label>
+                        <div class="col-sm-4 col-xs-9">
+                            <select name="" id="vtype" class="form-control">
+                                <option value="ys">视频资源</option>
+                                <option value="yy">音频资源</option>
+                                <option value="ysdw">有声读物</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">标题:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <input type="text" class="form-control" name="title">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">作者:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <input type="text" class="form-control" name="author">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">简介:</label>
+                        <div class="col-sm-6 col-xs-9">
+                                <textarea name="" id="desp" cols="20" rows="8" style="resize: none;" class="form-control">
+                                </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">封面:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <div id="upload1" style="width: 100px;height: 100px;border: 1px #ddd solid">
+                                <input type="file" name="fontCover" id="fileUpload">
+                                <img src="" id="imgView" alt="" style="width: 100px;height: 100px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">资源地址:</label>
+                        <div class="col-sm-6 col-xs-9" id="addUrl">
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <div class="input-group-addon" style="padding: 0;padding-left: 10px;border: none;">
+                                    <button class="btn btn-success bnt-xs" type="button" id="btnAdd"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">范围:</label>
+                        <div class="col-sm-6 col-xs-9 ">
+                            <div class="form-inline">
+                                <div class="Study_section1" id="primarySchool">
+                                    <lable class="studySection "><strong>小学段: </strong><input type="checkbox" class="i-checks" ></lable>
+                                    <div class="studySectionCon">
+                                        <lable>一年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>二年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>三年级: <input type="checkbox" class="i-checks"></lable>
+                                        <br>
+                                        <lable>四年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>五年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>六年级: <input type="checkbox" class="i-checks"></lable>
+                                    </div>
+                                </div>
+                                <div class="Study_section2" id="juniorSchool">
+                                    <lable class="studySection "><strong>初中段: </strong><input type="checkbox" class="i-checks"  ></lable>
+                                    <div class="studySectionCon">
+                                        <lable>七年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>八年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>九年级: <input type="checkbox" class="i-checks"></lable>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">是否常用:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <input type="checkbox" id="iscys" class="form-control i-checks">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary" type="button" id="test01">提交</button>
+                        <button type="reset" class="btn btn-lg btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="js/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
+<script src="js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="js/plugins/layui/layui.js"></script>
+<script src="js/demo/resource_management.js"></script>
+</html>

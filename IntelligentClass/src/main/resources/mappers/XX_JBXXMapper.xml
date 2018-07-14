@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.XX_JBXXMapper" >
+  <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.XX_JBXX" >
+    <id column="XX_JBXX_ID" property="xxJbxxId" jdbcType="VARCHAR" />
+    <result column="XXBSM" property="xxbsm" jdbcType="VARCHAR" />
+    <result column="XXMC" property="xxmc" jdbcType="VARCHAR" />
+    <result column="XXYWMC" property="xxywmc" jdbcType="VARCHAR" />
+    <result column="XXDZ" property="xxdz" jdbcType="VARCHAR" />
+    <result column="XXDZDM" property="xxdzdm" jdbcType="VARCHAR" />
+    <result column="XXZDCXLXDM" property="xxzdcxlxdm" jdbcType="VARCHAR" />
+    <result column="SDGLJYXZDM" property="sdgljyxzdm" jdbcType="VARCHAR" />
+    <result column="SDGLJYXZMC" property="sdgljyxzmc" jdbcType="VARCHAR" />
+    <result column="SSZGJYXZDM" property="sszgjyxzdm" jdbcType="VARCHAR" />
+    <result column="SSZGJYXZMC" property="sszgjyxzmc" jdbcType="VARCHAR" />
+    <result column="XXBXLXDM" property="xxbxlxdm" jdbcType="VARCHAR" />
+    <result column="XXJBZDM" property="xxjbzdm" jdbcType="VARCHAR" />
+    <result column="XZXM" property="xzxm" jdbcType="VARCHAR" />
+    <result column="XZSJHM" property="xzsjhm" jdbcType="VARCHAR" />
+    <result column="BGDH" property="bgdh" jdbcType="VARCHAR" />
+    <result column="CZDH" property="czdh" jdbcType="VARCHAR" />
+    <result column="YZBM" property="yzbm" jdbcType="VARCHAR" />
+    <result column="WZZYDZ" property="wzzydz" jdbcType="VARCHAR" />
+    <result column="DWDZXX" property="dwdzxx" jdbcType="VARCHAR" />
+    <result column="XXXZ" property="xxxz" jdbcType="DECIMAL" />
+    <result column="XXRXNL" property="xxrxnl" jdbcType="DECIMAL" />
+    <result column="CZXZ" property="czxz" jdbcType="DECIMAL" />
+    <result column="CZRXNL" property="czrxnl" jdbcType="DECIMAL" />
+    <result column="GZXZ" property="gzxz" jdbcType="DECIMAL" />
+    <result column="GZRXNL" property="gzrxnl" jdbcType="DECIMAL" />
+    <result column="TBRYX" property="tbryx" jdbcType="VARCHAR" />
+    <result column="ZZJGDM" property="zzjgdm" jdbcType="VARCHAR" />
+    <result column="JXNF" property="jxnf" jdbcType="VARCHAR" />
+    <result column="FRDJZH" property="frdjzh" jdbcType="VARCHAR" />
+    <result column="XQR" property="xqr" jdbcType="VARCHAR" />
+    <result column="XXTDCQ" property="xxtdcq" jdbcType="VARCHAR" />
+    <result column="TDZH" property="tdzh" jdbcType="VARCHAR" />
+    <result column="JSZXSDM" property="jszxsdm" jdbcType="VARCHAR" />
+    <result column="HBGD" property="hbgd" jdbcType="DECIMAL" />
+    <result column="XXJD" property="xxjd" jdbcType="DECIMAL" />
+    <result column="XXWD" property="xxwd" jdbcType="DECIMAL" />
+    <result column="SZDJJSXDM" property="szdjjsxdm" jdbcType="VARCHAR" />
+    <result column="SZDMZSXDM" property="szdmzsxdm" jdbcType="VARCHAR" />
+    <result column="SZDDYSXDM" property="szddysxdm" jdbcType="VARCHAR" />
+    <result column="ZSBJ" property="zsbj" jdbcType="VARCHAR" />
+    <result column="ZJXYYDM" property="zjxyydm" jdbcType="VARCHAR" />
+    <result column="FZJXYYDM" property="fzjxyydm" jdbcType="VARCHAR" />
+    <result column="DLSZSSMZXXDM" property="dlszssmzxxdm" jdbcType="VARCHAR" />
+    <result column="FSGXXXBS" property="fsgxxxbs" jdbcType="VARCHAR" />
+    <result column="SSZGDWM" property="sszgdwm" jdbcType="VARCHAR" />
+    <result column="FDDBR" property="fddbr" jdbcType="VARCHAR" />
+    <result column="XYMYM" property="xymym" jdbcType="VARCHAR" />
+    <result column="XXZTM" property="xxztm" jdbcType="VARCHAR" />
+    <result column="SFZXXBZ" property="sfzxxbz" jdbcType="VARCHAR" />
+    <result column="SSZXX_ID" property="sszxxId" jdbcType="VARCHAR" />
+    <result column="SJLYBZM" property="sjlybzm" jdbcType="VARCHAR" />
+    <result column="LRR" property="lrr" jdbcType="VARCHAR" />
+    <result column="LRSJ" property="lrsj" jdbcType="VARCHAR" />
+    <result column="GXR" property="gxr" jdbcType="VARCHAR" />
+    <result column="GXSJ" property="gxsj" jdbcType="VARCHAR" />
+    <result column="SFZXXDG" property="sfzxxdg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    XX_JBXX_ID, XXBSM, XXMC, XXYWMC, XXDZ, XXDZDM, XXZDCXLXDM, SDGLJYXZDM, SDGLJYXZMC, 
+    SSZGJYXZDM, SSZGJYXZMC, XXBXLXDM, XXJBZDM, XZXM, XZSJHM, BGDH, CZDH, YZBM, WZZYDZ, 
+    DWDZXX, XXXZ, XXRXNL, CZXZ, CZRXNL, GZXZ, GZRXNL, TBRYX, ZZJGDM, JXNF, FRDJZH, XQR, 
+    XXTDCQ, TDZH, JSZXSDM, HBGD, XXJD, XXWD, SZDJJSXDM, SZDMZSXDM, SZDDYSXDM, ZSBJ, ZJXYYDM, 
+    FZJXYYDM, DLSZSSMZXXDM, FSGXXXBS, SSZGDWM, FDDBR, XYMYM, XXZTM, SFZXXBZ, SSZXX_ID, 
+    SJLYBZM, LRR, LRSJ, GXR, GXSJ, SFZXXDG
+  </sql>
+
+  <resultMap id="loopSpeedResult"   type="HashMap">
+    <id column="XX_JBXX_ID" property="xxJbxxId" jdbcType="VARCHAR" />
+    <result column="XXBSM" property="xxbsm" jdbcType="VARCHAR" />
+    <result column="XXMC" property="xxmc" jdbcType="VARCHAR" />
+    <result column="XXYWMC" property="xxywmc" jdbcType="VARCHAR" />
+    <result column="XXDZ" property="xxdz" jdbcType="VARCHAR" />
+    <result column="XXDZDM" property="xxdzdm" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="SelectPart" >
+    XX_JBXX_ID, XXBSM, XXMC, XXYWMC, XXDZ, XXDZDM
+  </sql>
+  <!--查询所有学校信息-->
+  <select id="findAll"  parameterType="java.util.Map" resultMap="loopSpeedResult" >
+    select
+    <include refid="SelectPart" />
+    from XX_JBXX
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from XX_JBXX
+    where XX_JBXX_ID = #{xxJbxxId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from XX_JBXX
+    where XX_JBXX_ID = #{xxJbxxId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tiye.IntelligentClass.model.XX_JBXX" >
+    insert into XX_JBXX (XX_JBXX_ID, XXBSM, XXMC, 
+      XXYWMC, XXDZ, XXDZDM, 
+      XXZDCXLXDM, SDGLJYXZDM, SDGLJYXZMC, 
+      SSZGJYXZDM, SSZGJYXZMC, XXBXLXDM, 
+      XXJBZDM, XZXM, XZSJHM, 
+      BGDH, CZDH, YZBM, WZZYDZ, 
+      DWDZXX, XXXZ, XXRXNL, 
+      CZXZ, CZRXNL, GZXZ, 
+      GZRXNL, TBRYX, ZZJGDM, 
+      JXNF, FRDJZH, XQR, 
+      XXTDCQ, TDZH, JSZXSDM, 
+      HBGD, XXJD, XXWD, SZDJJSXDM, 
+      SZDMZSXDM, SZDDYSXDM, ZSBJ, 
+      ZJXYYDM, FZJXYYDM, DLSZSSMZXXDM, 
+      FSGXXXBS, SSZGDWM, FDDBR, 
+      XYMYM, XXZTM, SFZXXBZ, 
+      SSZXX_ID, SJLYBZM, LRR, 
+      LRSJ, GXR, GXSJ, SFZXXDG)
+    values (#{xxJbxxId,jdbcType=VARCHAR}, #{xxbsm,jdbcType=VARCHAR}, #{xxmc,jdbcType=VARCHAR}, 
+      #{xxywmc,jdbcType=VARCHAR}, #{xxdz,jdbcType=VARCHAR}, #{xxdzdm,jdbcType=VARCHAR}, 
+      #{xxzdcxlxdm,jdbcType=VARCHAR}, #{sdgljyxzdm,jdbcType=VARCHAR}, #{sdgljyxzmc,jdbcType=VARCHAR}, 
+      #{sszgjyxzdm,jdbcType=VARCHAR}, #{sszgjyxzmc,jdbcType=VARCHAR}, #{xxbxlxdm,jdbcType=VARCHAR}, 
+      #{xxjbzdm,jdbcType=VARCHAR}, #{xzxm,jdbcType=VARCHAR}, #{xzsjhm,jdbcType=VARCHAR}, 
+      #{bgdh,jdbcType=VARCHAR}, #{czdh,jdbcType=VARCHAR}, #{yzbm,jdbcType=VARCHAR}, #{wzzydz,jdbcType=VARCHAR}, 
+      #{dwdzxx,jdbcType=VARCHAR}, #{xxxz,jdbcType=DECIMAL}, #{xxrxnl,jdbcType=DECIMAL}, 
+      #{czxz,jdbcType=DECIMAL}, #{czrxnl,jdbcType=DECIMAL}, #{gzxz,jdbcType=DECIMAL}, 
+      #{gzrxnl,jdbcType=DECIMAL}, #{tbryx,jdbcType=VARCHAR}, #{zzjgdm,jdbcType=VARCHAR}, 
+      #{jxnf,jdbcType=VARCHAR}, #{frdjzh,jdbcType=VARCHAR}, #{xqr,jdbcType=VARCHAR}, 
+      #{xxtdcq,jdbcType=VARCHAR}, #{tdzh,jdbcType=VARCHAR}, #{jszxsdm,jdbcType=VARCHAR}, 
+      #{hbgd,jdbcType=DECIMAL}, #{xxjd,jdbcType=DECIMAL}, #{xxwd,jdbcType=DECIMAL}, #{szdjjsxdm,jdbcType=VARCHAR}, 
+      #{szdmzsxdm,jdbcType=VARCHAR}, #{szddysxdm,jdbcType=VARCHAR}, #{zsbj,jdbcType=VARCHAR}, 
+      #{zjxyydm,jdbcType=VARCHAR}, #{fzjxyydm,jdbcType=VARCHAR}, #{dlszssmzxxdm,jdbcType=VARCHAR}, 
+      #{fsgxxxbs,jdbcType=VARCHAR}, #{sszgdwm,jdbcType=VARCHAR}, #{fddbr,jdbcType=VARCHAR}, 
+      #{xymym,jdbcType=VARCHAR}, #{xxztm,jdbcType=VARCHAR}, #{sfzxxbz,jdbcType=VARCHAR}, 
+      #{sszxxId,jdbcType=VARCHAR}, #{sjlybzm,jdbcType=VARCHAR}, #{lrr,jdbcType=VARCHAR}, 
+      #{lrsj,jdbcType=VARCHAR}, #{gxr,jdbcType=VARCHAR}, #{gxsj,jdbcType=VARCHAR}, #{sfzxxdg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tiye.IntelligentClass.model.XX_JBXX" >
+    insert into XX_JBXX
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xxJbxxId != null" >
+        XX_JBXX_ID,
+      </if>
+      <if test="xxbsm != null" >
+        XXBSM,
+      </if>
+      <if test="xxmc != null" >
+        XXMC,
+      </if>
+      <if test="xxywmc != null" >
+        XXYWMC,
+      </if>
+      <if test="xxdz != null" >
+        XXDZ,
+      </if>
+      <if test="xxdzdm != null" >
+        XXDZDM,
+      </if>
+      <if test="xxzdcxlxdm != null" >
+        XXZDCXLXDM,
+      </if>
+      <if test="sdgljyxzdm != null" >
+        SDGLJYXZDM,
+      </if>
+      <if test="sdgljyxzmc != null" >
+        SDGLJYXZMC,
+      </if>
+      <if test="sszgjyxzdm != null" >
+        SSZGJYXZDM,
+      </if>
+      <if test="sszgjyxzmc != null" >
+        SSZGJYXZMC,
+      </if>
+      <if test="xxbxlxdm != null" >
+        XXBXLXDM,
+      </if>
+      <if test="xxjbzdm != null" >
+        XXJBZDM,
+      </if>
+      <if test="xzxm != null" >
+        XZXM,
+      </if>
+      <if test="xzsjhm != null" >
+        XZSJHM,
+      </if>
+      <if test="bgdh != null" >
+        BGDH,
+      </if>
+      <if test="czdh != null" >
+        CZDH,
+      </if>
+      <if test="yzbm != null" >
+        YZBM,
+      </if>
+      <if test="wzzydz != null" >
+        WZZYDZ,
+      </if>
+      <if test="dwdzxx != null" >
+        DWDZXX,
+      </if>
+      <if test="xxxz != null" >
+        XXXZ,
+      </if>
+      <if test="xxrxnl != null" >
+        XXRXNL,
+      </if>
+      <if test="czxz != null" >
+        CZXZ,
+      </if>
+      <if test="czrxnl != null" >
+        CZRXNL,
+      </if>
+      <if test="gzxz != null" >
+        GZXZ,
+      </if>
+      <if test="gzrxnl != null" >
+        GZRXNL,
+      </if>
+      <if test="tbryx != null" >
+        TBRYX,
+      </if>
+      <if test="zzjgdm != null" >
+        ZZJGDM,
+      </if>
+      <if test="jxnf != null" >
+        JXNF,
+      </if>
+      <if test="frdjzh != null" >
+        FRDJZH,
+      </if>
+      <if test="xqr != null" >
+        XQR,
+      </if>
+      <if test="xxtdcq != null" >
+        XXTDCQ,
+      </if>
+      <if test="tdzh != null" >
+        TDZH,
+      </if>
+      <if test="jszxsdm != null" >
+        JSZXSDM,
+      </if>
+      <if test="hbgd != null" >
+        HBGD,
+      </if>
+      <if test="xxjd != null" >
+        XXJD,
+      </if>
+      <if test="xxwd != null" >
+        XXWD,
+      </if>
+      <if test="szdjjsxdm != null" >
+        SZDJJSXDM,
+      </if>
+      <if test="szdmzsxdm != null" >
+        SZDMZSXDM,
+      </if>
+      <if test="szddysxdm != null" >
+        SZDDYSXDM,
+      </if>
+      <if test="zsbj != null" >
+        ZSBJ,
+      </if>
+      <if test="zjxyydm != null" >
+        ZJXYYDM,
+      </if>
+      <if test="fzjxyydm != null" >
+        FZJXYYDM,
+      </if>
+      <if test="dlszssmzxxdm != null" >
+        DLSZSSMZXXDM,
+      </if>
+      <if test="fsgxxxbs != null" >
+        FSGXXXBS,
+      </if>
+      <if test="sszgdwm != null" >
+        SSZGDWM,
+      </if>
+      <if test="fddbr != null" >
+        FDDBR,
+      </if>
+      <if test="xymym != null" >
+        XYMYM,
+      </if>
+      <if test="xxztm != null" >
+        XXZTM,
+      </if>
+      <if test="sfzxxbz != null" >
+        SFZXXBZ,
+      </if>
+      <if test="sszxxId != null" >
+        SSZXX_ID,
+      </if>
+      <if test="sjlybzm != null" >
+        SJLYBZM,
+      </if>
+      <if test="lrr != null" >
+        LRR,
+      </if>
+      <if test="lrsj != null" >
+        LRSJ,
+      </if>
+      <if test="gxr != null" >
+        GXR,
+      </if>
+      <if test="gxsj != null" >
+        GXSJ,
+      </if>
+      <if test="sfzxxdg != null" >
+        SFZXXDG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xxJbxxId != null" >
+        #{xxJbxxId,jdbcType=VARCHAR},
+      </if>
+      <if test="xxbsm != null" >
+        #{xxbsm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxmc != null" >
+        #{xxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxywmc != null" >
+        #{xxywmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxdz != null" >
+        #{xxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="xxdzdm != null" >
+        #{xxdzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxzdcxlxdm != null" >
+        #{xxzdcxlxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="sdgljyxzdm != null" >
+        #{sdgljyxzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="sdgljyxzmc != null" >
+        #{sdgljyxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sszgjyxzdm != null" >
+        #{sszgjyxzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="sszgjyxzmc != null" >
+        #{sszgjyxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxbxlxdm != null" >
+        #{xxbxlxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxjbzdm != null" >
+        #{xxjbzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xzxm != null" >
+        #{xzxm,jdbcType=VARCHAR},
+      </if>
+      <if test="xzsjhm != null" >
+        #{xzsjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="bgdh != null" >
+        #{bgdh,jdbcType=VARCHAR},
+      </if>
+      <if test="czdh != null" >
+        #{czdh,jdbcType=VARCHAR},
+      </if>
+      <if test="yzbm != null" >
+        #{yzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="wzzydz != null" >
+        #{wzzydz,jdbcType=VARCHAR},
+      </if>
+      <if test="dwdzxx != null" >
+        #{dwdzxx,jdbcType=VARCHAR},
+      </if>
+      <if test="xxxz != null" >
+        #{xxxz,jdbcType=DECIMAL},
+      </if>
+      <if test="xxrxnl != null" >
+        #{xxrxnl,jdbcType=DECIMAL},
+      </if>
+      <if test="czxz != null" >
+        #{czxz,jdbcType=DECIMAL},
+      </if>
+      <if test="czrxnl != null" >
+        #{czrxnl,jdbcType=DECIMAL},
+      </if>
+      <if test="gzxz != null" >
+        #{gzxz,jdbcType=DECIMAL},
+      </if>
+      <if test="gzrxnl != null" >
+        #{gzrxnl,jdbcType=DECIMAL},
+      </if>
+      <if test="tbryx != null" >
+        #{tbryx,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjgdm != null" >
+        #{zzjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxnf != null" >
+        #{jxnf,jdbcType=VARCHAR},
+      </if>
+      <if test="frdjzh != null" >
+        #{frdjzh,jdbcType=VARCHAR},
+      </if>
+      <if test="xqr != null" >
+        #{xqr,jdbcType=VARCHAR},
+      </if>
+      <if test="xxtdcq != null" >
+        #{xxtdcq,jdbcType=VARCHAR},
+      </if>
+      <if test="tdzh != null" >
+        #{tdzh,jdbcType=VARCHAR},
+      </if>
+      <if test="jszxsdm != null" >
+        #{jszxsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="hbgd != null" >
+        #{hbgd,jdbcType=DECIMAL},
+      </if>
+      <if test="xxjd != null" >
+        #{xxjd,jdbcType=DECIMAL},
+      </if>
+      <if test="xxwd != null" >
+        #{xxwd,jdbcType=DECIMAL},
+      </if>
+      <if test="szdjjsxdm != null" >
+        #{szdjjsxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="szdmzsxdm != null" >
+        #{szdmzsxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="szddysxdm != null" >
+        #{szddysxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zsbj != null" >
+        #{zsbj,jdbcType=VARCHAR},
+      </if>
+      <if test="zjxyydm != null" >
+        #{zjxyydm,jdbcType=VARCHAR},
+      </if>
+      <if test="fzjxyydm != null" >
+        #{fzjxyydm,jdbcType=VARCHAR},
+      </if>
+      <if test="dlszssmzxxdm != null" >
+        #{dlszssmzxxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="fsgxxxbs != null" >
+        #{fsgxxxbs,jdbcType=VARCHAR},
+      </if>
+      <if test="sszgdwm != null" >
+        #{sszgdwm,jdbcType=VARCHAR},
+      </if>
+      <if test="fddbr != null" >
+        #{fddbr,jdbcType=VARCHAR},
+      </if>
+      <if test="xymym != null" >
+        #{xymym,jdbcType=VARCHAR},
+      </if>
+      <if test="xxztm != null" >
+        #{xxztm,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzxxbz != null" >
+        #{sfzxxbz,jdbcType=VARCHAR},
+      </if>
+      <if test="sszxxId != null" >
+        #{sszxxId,jdbcType=VARCHAR},
+      </if>
+      <if test="sjlybzm != null" >
+        #{sjlybzm,jdbcType=VARCHAR},
+      </if>
+      <if test="lrr != null" >
+        #{lrr,jdbcType=VARCHAR},
+      </if>
+      <if test="lrsj != null" >
+        #{lrsj,jdbcType=VARCHAR},
+      </if>
+      <if test="gxr != null" >
+        #{gxr,jdbcType=VARCHAR},
+      </if>
+      <if test="gxsj != null" >
+        #{gxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzxxdg != null" >
+        #{sfzxxdg,jdbcType=VARCHAR},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tiye.IntelligentClass.model.XX_JBXX" >
+    update XX_JBXX
+    <set >
+      <if test="xxbsm != null" >
+        XXBSM = #{xxbsm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxmc != null" >
+        XXMC = #{xxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxywmc != null" >
+        XXYWMC = #{xxywmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxdz != null" >
+        XXDZ = #{xxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="xxdzdm != null" >
+        XXDZDM = #{xxdzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxzdcxlxdm != null" >
+        XXZDCXLXDM = #{xxzdcxlxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="sdgljyxzdm != null" >
+        SDGLJYXZDM = #{sdgljyxzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="sdgljyxzmc != null" >
+        SDGLJYXZMC = #{sdgljyxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sszgjyxzdm != null" >
+        SSZGJYXZDM = #{sszgjyxzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="sszgjyxzmc != null" >
+        SSZGJYXZMC = #{sszgjyxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xxbxlxdm != null" >
+        XXBXLXDM = #{xxbxlxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxjbzdm != null" >
+        XXJBZDM = #{xxjbzdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xzxm != null" >
+        XZXM = #{xzxm,jdbcType=VARCHAR},
+      </if>
+      <if test="xzsjhm != null" >
+        XZSJHM = #{xzsjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="bgdh != null" >
+        BGDH = #{bgdh,jdbcType=VARCHAR},
+      </if>
+      <if test="czdh != null" >
+        CZDH = #{czdh,jdbcType=VARCHAR},
+      </if>
+      <if test="yzbm != null" >
+        YZBM = #{yzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="wzzydz != null" >
+        WZZYDZ = #{wzzydz,jdbcType=VARCHAR},
+      </if>
+      <if test="dwdzxx != null" >
+        DWDZXX = #{dwdzxx,jdbcType=VARCHAR},
+      </if>
+      <if test="xxxz != null" >
+        XXXZ = #{xxxz,jdbcType=DECIMAL},
+      </if>
+      <if test="xxrxnl != null" >
+        XXRXNL = #{xxrxnl,jdbcType=DECIMAL},
+      </if>
+      <if test="czxz != null" >
+        CZXZ = #{czxz,jdbcType=DECIMAL},
+      </if>
+      <if test="czrxnl != null" >
+        CZRXNL = #{czrxnl,jdbcType=DECIMAL},
+      </if>
+      <if test="gzxz != null" >
+        GZXZ = #{gzxz,jdbcType=DECIMAL},
+      </if>
+      <if test="gzrxnl != null" >
+        GZRXNL = #{gzrxnl,jdbcType=DECIMAL},
+      </if>
+      <if test="tbryx != null" >
+        TBRYX = #{tbryx,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjgdm != null" >
+        ZZJGDM = #{zzjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxnf != null" >
+        JXNF = #{jxnf,jdbcType=VARCHAR},
+      </if>
+      <if test="frdjzh != null" >
+        FRDJZH = #{frdjzh,jdbcType=VARCHAR},
+      </if>
+      <if test="xqr != null" >
+        XQR = #{xqr,jdbcType=VARCHAR},
+      </if>
+      <if test="xxtdcq != null" >
+        XXTDCQ = #{xxtdcq,jdbcType=VARCHAR},
+      </if>
+      <if test="tdzh != null" >
+        TDZH = #{tdzh,jdbcType=VARCHAR},
+      </if>
+      <if test="jszxsdm != null" >
+        JSZXSDM = #{jszxsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="hbgd != null" >
+        HBGD = #{hbgd,jdbcType=DECIMAL},
+      </if>
+      <if test="xxjd != null" >
+        XXJD = #{xxjd,jdbcType=DECIMAL},
+      </if>
+      <if test="xxwd != null" >
+        XXWD = #{xxwd,jdbcType=DECIMAL},
+      </if>
+      <if test="szdjjsxdm != null" >
+        SZDJJSXDM = #{szdjjsxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="szdmzsxdm != null" >
+        SZDMZSXDM = #{szdmzsxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="szddysxdm != null" >
+        SZDDYSXDM = #{szddysxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zsbj != null" >
+        ZSBJ = #{zsbj,jdbcType=VARCHAR},
+      </if>
+      <if test="zjxyydm != null" >
+        ZJXYYDM = #{zjxyydm,jdbcType=VARCHAR},
+      </if>
+      <if test="fzjxyydm != null" >
+        FZJXYYDM = #{fzjxyydm,jdbcType=VARCHAR},
+      </if>
+      <if test="dlszssmzxxdm != null" >
+        DLSZSSMZXXDM = #{dlszssmzxxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="fsgxxxbs != null" >
+        FSGXXXBS = #{fsgxxxbs,jdbcType=VARCHAR},
+      </if>
+      <if test="sszgdwm != null" >
+        SSZGDWM = #{sszgdwm,jdbcType=VARCHAR},
+      </if>
+      <if test="fddbr != null" >
+        FDDBR = #{fddbr,jdbcType=VARCHAR},
+      </if>
+      <if test="xymym != null" >
+        XYMYM = #{xymym,jdbcType=VARCHAR},
+      </if>
+      <if test="xxztm != null" >
+        XXZTM = #{xxztm,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzxxbz != null" >
+        SFZXXBZ = #{sfzxxbz,jdbcType=VARCHAR},
+      </if>
+      <if test="sszxxId != null" >
+        SSZXX_ID = #{sszxxId,jdbcType=VARCHAR},
+      </if>
+      <if test="sjlybzm != null" >
+        SJLYBZM = #{sjlybzm,jdbcType=VARCHAR},
+      </if>
+      <if test="lrr != null" >
+        LRR = #{lrr,jdbcType=VARCHAR},
+      </if>
+      <if test="lrsj != null" >
+        LRSJ = #{lrsj,jdbcType=VARCHAR},
+      </if>
+      <if test="gxr != null" >
+        GXR = #{gxr,jdbcType=VARCHAR},
+      </if>
+      <if test="gxsj != null" >
+        GXSJ = #{gxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="sfzxxdg != null" >
+        SFZXXDG = #{sfzxxdg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where XX_JBXX_ID = #{xxJbxxId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tiye.IntelligentClass.model.XX_JBXX" >
+    update XX_JBXX
+    set XXBSM = #{xxbsm,jdbcType=VARCHAR},
+      XXMC = #{xxmc,jdbcType=VARCHAR},
+      XXYWMC = #{xxywmc,jdbcType=VARCHAR},
+      XXDZ = #{xxdz,jdbcType=VARCHAR},
+      XXDZDM = #{xxdzdm,jdbcType=VARCHAR},
+      XXZDCXLXDM = #{xxzdcxlxdm,jdbcType=VARCHAR},
+      SDGLJYXZDM = #{sdgljyxzdm,jdbcType=VARCHAR},
+      SDGLJYXZMC = #{sdgljyxzmc,jdbcType=VARCHAR},
+      SSZGJYXZDM = #{sszgjyxzdm,jdbcType=VARCHAR},
+      SSZGJYXZMC = #{sszgjyxzmc,jdbcType=VARCHAR},
+      XXBXLXDM = #{xxbxlxdm,jdbcType=VARCHAR},
+      XXJBZDM = #{xxjbzdm,jdbcType=VARCHAR},
+      XZXM = #{xzxm,jdbcType=VARCHAR},
+      XZSJHM = #{xzsjhm,jdbcType=VARCHAR},
+      BGDH = #{bgdh,jdbcType=VARCHAR},
+      CZDH = #{czdh,jdbcType=VARCHAR},
+      YZBM = #{yzbm,jdbcType=VARCHAR},
+      WZZYDZ = #{wzzydz,jdbcType=VARCHAR},
+      DWDZXX = #{dwdzxx,jdbcType=VARCHAR},
+      XXXZ = #{xxxz,jdbcType=DECIMAL},
+      XXRXNL = #{xxrxnl,jdbcType=DECIMAL},
+      CZXZ = #{czxz,jdbcType=DECIMAL},
+      CZRXNL = #{czrxnl,jdbcType=DECIMAL},
+      GZXZ = #{gzxz,jdbcType=DECIMAL},
+      GZRXNL = #{gzrxnl,jdbcType=DECIMAL},
+      TBRYX = #{tbryx,jdbcType=VARCHAR},
+      ZZJGDM = #{zzjgdm,jdbcType=VARCHAR},
+      JXNF = #{jxnf,jdbcType=VARCHAR},
+      FRDJZH = #{frdjzh,jdbcType=VARCHAR},
+      XQR = #{xqr,jdbcType=VARCHAR},
+      XXTDCQ = #{xxtdcq,jdbcType=VARCHAR},
+      TDZH = #{tdzh,jdbcType=VARCHAR},
+      JSZXSDM = #{jszxsdm,jdbcType=VARCHAR},
+      HBGD = #{hbgd,jdbcType=DECIMAL},
+      XXJD = #{xxjd,jdbcType=DECIMAL},
+      XXWD = #{xxwd,jdbcType=DECIMAL},
+      SZDJJSXDM = #{szdjjsxdm,jdbcType=VARCHAR},
+      SZDMZSXDM = #{szdmzsxdm,jdbcType=VARCHAR},
+      SZDDYSXDM = #{szddysxdm,jdbcType=VARCHAR},
+      ZSBJ = #{zsbj,jdbcType=VARCHAR},
+      ZJXYYDM = #{zjxyydm,jdbcType=VARCHAR},
+      FZJXYYDM = #{fzjxyydm,jdbcType=VARCHAR},
+      DLSZSSMZXXDM = #{dlszssmzxxdm,jdbcType=VARCHAR},
+      FSGXXXBS = #{fsgxxxbs,jdbcType=VARCHAR},
+      SSZGDWM = #{sszgdwm,jdbcType=VARCHAR},
+      FDDBR = #{fddbr,jdbcType=VARCHAR},
+      XYMYM = #{xymym,jdbcType=VARCHAR},
+      XXZTM = #{xxztm,jdbcType=VARCHAR},
+      SFZXXBZ = #{sfzxxbz,jdbcType=VARCHAR},
+      SSZXX_ID = #{sszxxId,jdbcType=VARCHAR},
+      SJLYBZM = #{sjlybzm,jdbcType=VARCHAR},
+      LRR = #{lrr,jdbcType=VARCHAR},
+      LRSJ = #{lrsj,jdbcType=VARCHAR},
+      GXR = #{gxr,jdbcType=VARCHAR},
+      GXSJ = #{gxsj,jdbcType=VARCHAR},
+      SFZXXDG = #{sfzxxdg,jdbcType=VARCHAR}
+    where XX_JBXX_ID = #{xxJbxxId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tiye.IntelligentClass.model.XX_JBXX" >
+    update XX_JBXX
+    set XXBSM = #{xxbsm,jdbcType=VARCHAR},
+      XXMC = #{xxmc,jdbcType=VARCHAR},
+      XXYWMC = #{xxywmc,jdbcType=VARCHAR},
+      XXDZ = #{xxdz,jdbcType=VARCHAR},
+      XXDZDM = #{xxdzdm,jdbcType=VARCHAR},
+      XXZDCXLXDM = #{xxzdcxlxdm,jdbcType=VARCHAR},
+      SDGLJYXZDM = #{sdgljyxzdm,jdbcType=VARCHAR},
+      SDGLJYXZMC = #{sdgljyxzmc,jdbcType=VARCHAR},
+      SSZGJYXZDM = #{sszgjyxzdm,jdbcType=VARCHAR},
+      SSZGJYXZMC = #{sszgjyxzmc,jdbcType=VARCHAR},
+      XXBXLXDM = #{xxbxlxdm,jdbcType=VARCHAR},
+      XXJBZDM = #{xxjbzdm,jdbcType=VARCHAR},
+      XZXM = #{xzxm,jdbcType=VARCHAR},
+      XZSJHM = #{xzsjhm,jdbcType=VARCHAR},
+      BGDH = #{bgdh,jdbcType=VARCHAR},
+      CZDH = #{czdh,jdbcType=VARCHAR},
+      YZBM = #{yzbm,jdbcType=VARCHAR},
+      WZZYDZ = #{wzzydz,jdbcType=VARCHAR},
+      DWDZXX = #{dwdzxx,jdbcType=VARCHAR},
+      XXXZ = #{xxxz,jdbcType=DECIMAL},
+      XXRXNL = #{xxrxnl,jdbcType=DECIMAL},
+      CZXZ = #{czxz,jdbcType=DECIMAL},
+      CZRXNL = #{czrxnl,jdbcType=DECIMAL},
+      GZXZ = #{gzxz,jdbcType=DECIMAL},
+      GZRXNL = #{gzrxnl,jdbcType=DECIMAL},
+      TBRYX = #{tbryx,jdbcType=VARCHAR},
+      ZZJGDM = #{zzjgdm,jdbcType=VARCHAR},
+      JXNF = #{jxnf,jdbcType=VARCHAR},
+      FRDJZH = #{frdjzh,jdbcType=VARCHAR},
+      XQR = #{xqr,jdbcType=VARCHAR},
+      XXTDCQ = #{xxtdcq,jdbcType=VARCHAR},
+      TDZH = #{tdzh,jdbcType=VARCHAR},
+      JSZXSDM = #{jszxsdm,jdbcType=VARCHAR},
+      HBGD = #{hbgd,jdbcType=DECIMAL},
+      XXJD = #{xxjd,jdbcType=DECIMAL},
+      XXWD = #{xxwd,jdbcType=DECIMAL},
+      SZDJJSXDM = #{szdjjsxdm,jdbcType=VARCHAR},
+      SZDMZSXDM = #{szdmzsxdm,jdbcType=VARCHAR},
+      SZDDYSXDM = #{szddysxdm,jdbcType=VARCHAR},
+      ZSBJ = #{zsbj,jdbcType=VARCHAR},
+      ZJXYYDM = #{zjxyydm,jdbcType=VARCHAR},
+      FZJXYYDM = #{fzjxyydm,jdbcType=VARCHAR},
+      DLSZSSMZXXDM = #{dlszssmzxxdm,jdbcType=VARCHAR},
+      FSGXXXBS = #{fsgxxxbs,jdbcType=VARCHAR},
+      SSZGDWM = #{sszgdwm,jdbcType=VARCHAR},
+      FDDBR = #{fddbr,jdbcType=VARCHAR},
+      XYMYM = #{xymym,jdbcType=VARCHAR},
+      XXZTM = #{xxztm,jdbcType=VARCHAR},
+      SFZXXBZ = #{sfzxxbz,jdbcType=VARCHAR},
+      SSZXX_ID = #{sszxxId,jdbcType=VARCHAR},
+      SJLYBZM = #{sjlybzm,jdbcType=VARCHAR},
+      LRR = #{lrr,jdbcType=VARCHAR},
+      LRSJ = #{lrsj,jdbcType=VARCHAR},
+      GXR = #{gxr,jdbcType=VARCHAR},
+      GXSJ = #{gxsj,jdbcType=VARCHAR},
+      SFZXXDG = #{sfzxxdg,jdbcType=VARCHAR}
+    where XX_JBXX_ID = #{xxJbxxId,jdbcType=VARCHAR}
+  </update>
+</mapper>

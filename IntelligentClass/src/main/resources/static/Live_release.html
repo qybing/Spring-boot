@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>直播发布</title>
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="js/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="css/plugins/iCheck/custom.css">
+    <link rel="stylesheet" href="css/plugins/jqgrid/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/demo/laypage.css">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 ">
+            <form action="" class="form form-inline">
+                <div class="form-group">
+                    <label class="control-label">直播位置:</label>
+                    <input type="text" class="form-control" placeholder="作者名字">
+                </div>
+                    <div class="form-group">
+                        <label class="control-label">时间范围:</label>
+                        <input type="text" id="date1" class="form-control">
+                    </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-search-plus"></i>查询</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+            <button class="btn btn-primary " data-toggle="modal" data-target="#uplaod">
+                <i class="fa fa-upload"></i>
+                <span>新增资源</span>
+            </button>
+            <span class="btnGroup">
+                <button class="btn btn-danger " data-type="deleteMore">
+                <i class="fa fa-trash-o"></i>
+                <span>删除</span>
+            </button>
+            </span>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div id="pTable" style="min-width: 1080px;">
+                <table class="layui-hide" id="layui_table_id" lay-filter="test">
+                </table>
+                <div id="laypage"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="barDemo">
+    <button class="btn btn-success btn-sm" lay-event="edit">编辑</button>
+    <button class="btn btn-danger btn-sm" lay-event="delete">删除</button>
+</script>
+
+
+
+<!--资源上传弹窗-->
+<div class="modal fadeIn " id="uplaod">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">直播上传</h4>
+            </div>
+            <div  class="modal-body" >
+                <form  action="" method="post" class="form-horizontal" id="uploadFrom1">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">类型:</label>
+                        <div class="col-sm-4 col-xs-9">
+                            <select name="" id="" class="form-control">
+                                <option value="type1">全部</option>
+                                <option value="type2">叶县会议室</option>
+                                <option value="type3">叶县会议室</option>
+                                <option value="type4">叶县会议室</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">标题:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <input type="text" class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">主讲单位/人:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">简介:</label>
+                        <div class="col-sm-6 col-xs-9">
+                                <textarea name="" id="" cols="20" rows="8" style="resize: none;" class="form-control">
+                                </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">范围:</label>
+                        <div class="col-sm-6 col-xs-9 ">
+                            <div class="form-inline">
+                                <div class="Study_section1" id="primarySchool">
+                                    <lable class="studySection "><strong>小学段: </strong><input type="checkbox" class="i-checks" ></lable>
+                                    <div class="studySectionCon">
+                                        <lable>一年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>二年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>三年级: <input type="checkbox" class="i-checks"></lable>
+                                        <br>
+                                        <lable>四年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>五年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>六年级: <input type="checkbox" class="i-checks"></lable>
+                                    </div>
+                                </div>
+                                <div class="Study_section2" id="juniorSchool">
+                                    <lable class="studySection "><strong>初中段: </strong><input type="checkbox" class="i-checks"  ></lable>
+                                    <div class="studySectionCon">
+                                        <lable>七年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>八年级: <input type="checkbox" class="i-checks"></lable>
+                                        <lable>九年级: <input type="checkbox" class="i-checks"></lable>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">预计开始时间:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <input type="text" class="form-control" id="date2">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">预计结束时间:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <input type="text" id="date3" class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary" type="submit" lay-submit lay-filter="subm">提交</button>
+                        <button type="reset" class="btn btn-lg btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="js/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
+<script src="js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="js/plugins/layui/layui.js"></script>
+<script>
+$(document).ready(function () {
+    $(".i-checks").iCheck({
+        checkboxClass:'icheckbox_square-blue',
+        radioClass: "iradio_square-blue",
+    })
+})
+ var limitcount = 10;
+    var curnum = 1;
+    var data={"code":0,"msg":"","count":1000,"data":[{
+            "position":"视频",
+            "range":"admin",
+            "startTime":"1233665444",
+            "endTime":"小明",
+        }]}
+    //列表查询方法
+    function productsearch(productGroupId,start,limitsize) {
+        layui.use(['table','laypage','layer','upload','jquery','form','laydate'], function(){
+            var table = layui.table,
+                laydate=layui.laydate,
+                laypage = layui.laypage,
+                layer=layui.layer,
+                upload=layui.upload,
+                form=layui.form,
+                $=layui.jquery;
+            table.render({
+                elem: '#layui_table_id'
+               // , url: 'pId='+productGroupId+'&Page='+ start+'&Number=' + limitsize //productGroupId (接口唯一标识) start 点击第几页(如:1,2,3) limitsize:(每页显示数据限制)
+               ,data:data.data
+                , cols: [[
+                    {type:'checkbox'},
+                    {field: 'position', title: '直播位置', minWidth: '100', sort: true}
+                    , {field: 'range', title: '直播范围', minWidth: '120'}
+                    , {field: 'startTime', title: '开始时间', minWidth: '120', sort: true}
+                    , {field: 'endTime', title: '结束时间', minWidth: '120'}
+                    , {field: 'poperation', title: '操作', minWidth: '120', toolbar: '#barDemo'}
+                ]]
+                , page: false
+                , height: 430
+                ,id:'idTest'
+                ,done: function(res, curr, count){
+                    //如果是异步请求数据方式，res即为你接口返回的信息。
+                    //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                    laypage.render({
+                        elem:'laypage'
+                        ,count:count
+                        ,curr:curnum
+                        ,limit:limitcount
+                        ,layout: ['prev', 'page', 'next', 'skip','count','limit']
+                        ,jump:function (obj,first) {
+                            if(!first){
+                                curnum = obj.curr;
+                                limitcount = obj.limit;
+                                //console.log("curnum"+curnum);
+                                //console.log("limitcount"+limitcount);
+                                //layer.msg(curnum+"-"+limitcount);
+                                productsearch(productGroupId,curnum,limitcount);
+                            }
+                        }
+                    })
+                }
+            })
+            //表格操作事件监听
+            table.on('tool(test)',function(obj){
+                var layData=obj.data;
+                if(obj.event=='edit'){
+                    //编辑操作
+                    console.log(layData)
+
+                }else if(obj.event=='delete'){
+                    layer.confirm("确定要删除吗?",function(index){
+                        //数据操作
+                        obj.del()
+                        layer.close(index)
+                    })
+                }
+            })
+            //data1日期范围
+            laydate.render({
+                elem: '#date1'
+                ,range: true
+            });
+            laydate.render({
+                elem: '#date2',
+                format:"yyyy-MM-dd",
+                min:""+new Date()
+            });
+            laydate.render({
+                elem: '#date3',
+                format:'yyyy-MM-dd',
+                min:""+ new Date()
+            });
+
+            //事件操作
+            var active={
+                deleteMore:function(){
+                    var checkStatus=table.checkStatus('idTest');
+                    var dataStatus=checkStatus.data;
+                    console.log(dataStatus)
+                    if (dataStatus.length!=0){
+                        layer.confirm("确定删除吗?",function(index){
+
+                            layer.close(index)
+                        })
+
+                    }else{
+                        layer.alert("请选择需要删除的内容")
+                    }
+                },
+
+            }
+            $('.btnGroup .btn').on('click', function(){
+                var type = $(this).data('type');
+                console.log(type)
+                active[type] ? active[type].call(this) : '';
+            });
+
+            $("#uplaod").on("show.bs.modal",function () {
+                $("#imgView").attr("src","")
+                //图片上传
+              var uploadP=  upload.render({
+                    elem: '#upload1'
+                    ,method:'post'
+                    ,url: '/upload/'
+                     ,auto:false
+                     ,accept:'images'
+                    //,size:500 //图片上传大小限制
+                    ,bindAction:'#submitBtn'
+                    ,choose: function(obj){
+                        //预读本地文件示例，不支持ie8
+                        obj.preview(function (index,file,result) {
+                            console.log(index);
+                            console.log(file)
+                           $("#imgView").attr("src",result)
+                        })
+                    }
+                    ,done: function(res){
+                        //console.log(res)
+                    }
+                });
+            })
+            $("#uplaod").on("hide.bs.modal",function () {
+                window.location.reload()
+            })
+            //小学初中全选
+            $(".studySection").find('.i-checks').on('ifChecked',function(){
+               $(this).parents('.studySection').next().find('.i-checks').iCheck('check')
+            })
+            $(".studySection").find('.i-checks').on('ifUnchecked',function(){
+                $(this).parents('.studySection').next().find('.i-checks').iCheck('uncheck')
+            })
+            //表单提交
+            form.on("submit(subm)",function(data){
+                console.log(data.field)
+
+            })
+        });
+    }
+    var pId = 2;
+$(window).on('load resize',function () {
+    productsearch(pId, curnum, limitcount);
+})
+</script>
+</html>

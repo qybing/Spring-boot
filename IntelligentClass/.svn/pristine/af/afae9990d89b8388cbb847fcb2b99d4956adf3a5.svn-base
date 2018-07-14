@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.InspectionNoticeMapper" >
+  <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.InspectionNotice" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="notice_type" property="noticeType" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="result" property="result" jdbcType="INTEGER" />
+    <result column="xx" property="xx" jdbcType="VARCHAR" />
+    <result column="nj" property="nj" jdbcType="VARCHAR" />
+    <result column="bj" property="bj" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, notice_type, content, result, xx, nj, bj, is_del, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from inspection_notice
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <sql id="basic_list_where">
+    where n.is_del=0
+    <if test="content != null and content!=''">
+      and  n.content like '%${content}%'
+    </if>
+    <if test="startTime != null and startTime!=''">
+      <![CDATA[
+		  and STR_TO_DATE(n.create_time, '%Y-%m-%d %H:%i:%s') >= STR_TO_DATE(#{startTime}, '%Y-%m-%d %H:%i:%s')
+	  ]]>
+    </if>
+    <if test="endTime!=null and endTime!=''">
+      <![CDATA[
+		  and STR_TO_DATE(n.create_time, '%Y-%m-%d %H:%i:%s') <= STR_TO_DATE(#{endTime}, '%Y-%m-%d %H:%i:%s')
+	  ]]>
+    </if>
+    <if test="xx != null and xx!=''">
+      and  n.xx = #{xx}
+    </if>
+    <if test="nj != null and nj!=''">
+      and  n.nj = #{nj}
+    </if>
+    <if test="bj != null and bj!=''">
+      and  n.bj = #{bj}
+    </if>
+    <if test="noticeType != null and noticeType!=''">
+      and  n.notice_type = #{noticeType}
+    </if>
+    <if test="resultStart != null and resultStart!=''">
+      and  <![CDATA[ n.result >= #{resultStart}]]>
+    </if>
+    <if test="resultEnd != null and resultEnd!=''">
+      and  <![CDATA[ n.result <= #{resultEnd}]]>
+    </if>
+  </sql>
+  <select id="getInsNoticecount" parameterType="map" resultType="java.lang.Integer">
+    select
+      count(*)
+    from inspection_notice n
+    <include refid="basic_list_where"/>
+  </select>
+  <select id="getInsNoticeList" parameterType="map" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List"/>,
+      xxJbxx.XXMC as xxName,
+      njXx.NJMC as njName,
+      bjXx.BJMC as bjName
+    from inspection_notice n
+    left join XX_JBXX xxJbxx on n.xx=xxJbxx.XX_JBXX_ID
+    left join XX_NJXX njXx on n.nj=njXx.XX_NJXX_ID
+    left join XX_BJXX bjXx on n.bj=bjXx.XX_BJXX_ID
+    <include refid="basic_list_where"/>
+    order by n.create_time DESC
+    limit ${start},${rows}
+  </select>
+  <select id="getInsNoticePc" parameterType="map" resultMap="BaseResultMap">
+      select * from inspection_notice as a
+          where create_time = (select max(b.create_time)
+	          from inspection_notice as b
+	          where a.notice_type = b.notice_type
+      )
+      and xx=#{xxJbxxId}
+      and nj=#{xxNjxxId}
+      and bj=#{xxBjxxId}
+  </select>
+  <insert id="insert" parameterType="com.tiye.IntelligentClass.model.InspectionNotice" useGeneratedKeys="true" keyProperty="id" >
+    insert into inspection_notice (
+      notice_type,
+      content,
+      result,
+      xx,
+      nj,
+      bj,
+      is_del,
+      create_time
+    ) values (
+      #{noticeType,jdbcType=VARCHAR},
+      #{content,jdbcType=VARCHAR},
+      #{result,jdbcType=INTEGER},
+      #{xx,jdbcType=VARCHAR},
+      #{nj,jdbcType=VARCHAR},
+      #{bj,jdbcType=VARCHAR},
+      #{isDel,jdbcType=BIT},
+      #{createTime,jdbcType=VARCHAR}
+    )
+  </insert>
+  <update id="falseDelByKey" parameterType="java.lang.Long">
+    update inspection_notice
+    set is_del=1
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="falseDelByKeys" parameterType="long[]">
+    update inspection_notice
+    set is_del=1
+    where id in
+    <foreach collection="array" item="arr" index="no" open="("
+             separator="," close=")">
+      #{arr}
+    </foreach>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tiye.IntelligentClass.model.InspectionNotice" >
+    update inspection_notice
+    <set >
+      <if test="noticeType != null" >
+        notice_type = #{noticeType,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=INTEGER},
+      </if>
+      <if test="xx != null" >
+        xx = #{xx,jdbcType=VARCHAR},
+      </if>
+      <if test="nj != null" >
+        nj = #{nj,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null" >
+        bj = #{bj,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>

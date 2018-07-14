@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>资源平台后台管理系统</title>
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="js/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="css/plugins/iCheck/custom.css">
+    <link rel="stylesheet" href="css/plugins/jqgrid/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/demo/laypage.css">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body class="gray-bg">
+<select name="" id="sel1">
+
+</select>
+
+
+
+<select name="sel2" id="sel2"></select>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="js/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
+<script src="js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="js/plugins/layui/layui.js"></script>
+<script>
+    layui.use(['jquery'],function () {
+        var $=layui.jquery;
+        $.get("back/XxNjbJ/getNjByXx",function(res){
+            var data=res.data;
+            for(var i=0;i<data.length;i++){
+                $("#sel1").append('<option value="'+data[i].xxNjxxId+'">'+data[i].njmc+'</option>')
+            }
+        });
+        $("#sel1").change(function () {
+            $.get("back/XxNjbJ/getBjByNj",{nj:$("#sel1 option:selected").val()},function (res) {
+                var data=res.data;
+               if(data.length=="0") {
+               }
+                for (var i=0;i<data.length;i++){
+                    $("#sel2").append('<option value="'+data[0].xxJbxxId+'">'+data[0].bjmc+'</option>')
+                }
+            })
+        })
+    })
+
+
+
+
+</script>
+</html>

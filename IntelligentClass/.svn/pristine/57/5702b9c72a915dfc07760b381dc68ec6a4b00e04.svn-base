@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.XX_NJXXMapper" >
+  <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.XX_NJXX" >
+    <id column="XX_NJXX_ID" property="xxNjxxId" jdbcType="VARCHAR" />
+    <result column="XX_JBXX_ID" property="xxJbxxId" jdbcType="VARCHAR" />
+    <result column="NJMC" property="njmc" jdbcType="VARCHAR" />
+    <result column="RXNF" property="rxnf" jdbcType="VARCHAR" />
+    <result column="JYJD" property="jyjd" jdbcType="VARCHAR" />
+    <result column="XJNJDM" property="xjnjdm" jdbcType="VARCHAR" />
+    <result column="XZ" property="xz" jdbcType="VARCHAR" />
+    <result column="NJZT" property="njzt" jdbcType="VARCHAR" />
+    <result column="NJSJ" property="njsj" jdbcType="VARCHAR" />
+    <result column="GXR" property="gxr" jdbcType="VARCHAR" />
+    <result column="GXSJ" property="gxsj" jdbcType="VARCHAR" />
+    <result column="XX_XQXX_ID" property="xxXqxxId" jdbcType="VARCHAR" />
+    <result column="LRR" property="lrr" jdbcType="VARCHAR" />
+    <result column="LRSJ" property="lrsj" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="BaseResultMap1" type="com.tiye.IntelligentClass.model.XX_NJXX" >
+    <id column="XX_NJXX_ID" property="xxNjxxId" jdbcType="VARCHAR" />
+    <result column="RXNF" property="rxnf" jdbcType="VARCHAR" />
+    <result column="JYJD" property="jyjd" jdbcType="VARCHAR" />
+
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.tiye.IntelligentClass.model.XX_NJXX" extends="BaseResultMap" >
+    <result column="NJJS" property="njjs" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    XX_NJXX_ID, XX_JBXX_ID, NJMC, RXNF, JYJD, XJNJDM, XZ, NJZT, NJSJ, GXR, GXSJ, XX_XQXX_ID,
+    LRR, LRSJ
+  </sql>
+  <sql id="Blob_Column_List" >
+    NJJS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from XX_NJXX
+    where XX_JBXX_ID = #{XX_JBXX_ID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from XX_NJXX
+    where XX_NJXX_ID = #{xxNjxxId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tiye.IntelligentClass.model.XX_NJXX" >
+    insert into XX_NJXX (XX_NJXX_ID, XX_JBXX_ID, NJMC,
+    RXNF, JYJD, XJNJDM,
+    XZ, NJZT, NJSJ, GXR,
+    GXSJ, XX_XQXX_ID, LRR,
+    LRSJ, NJJS)
+    values (#{xxNjxxId,jdbcType=VARCHAR}, #{xxJbxxId,jdbcType=VARCHAR}, #{njmc,jdbcType=VARCHAR},
+    #{rxnf,jdbcType=VARCHAR}, #{jyjd,jdbcType=VARCHAR}, #{xjnjdm,jdbcType=VARCHAR},
+    #{xz,jdbcType=VARCHAR}, #{njzt,jdbcType=VARCHAR}, #{njsj,jdbcType=VARCHAR}, #{gxr,jdbcType=VARCHAR},
+    #{gxsj,jdbcType=VARCHAR}, #{xxXqxxId,jdbcType=VARCHAR}, #{lrr,jdbcType=VARCHAR},
+    #{lrsj,jdbcType=VARCHAR}, #{njjs,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tiye.IntelligentClass.model.XX_NJXX" >
+    insert into XX_NJXX
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xxNjxxId != null" >
+        XX_NJXX_ID,
+      </if>
+      <if test="xxJbxxId != null" >
+        XX_JBXX_ID,
+      </if>
+      <if test="njmc != null" >
+        NJMC,
+      </if>
+      <if test="rxnf != null" >
+        RXNF,
+      </if>
+      <if test="jyjd != null" >
+        JYJD,
+      </if>
+      <if test="xjnjdm != null" >
+        XJNJDM,
+      </if>
+      <if test="xz != null" >
+        XZ,
+      </if>
+      <if test="njzt != null" >
+        NJZT,
+      </if>
+      <if test="njsj != null" >
+        NJSJ,
+      </if>
+      <if test="gxr != null" >
+        GXR,
+      </if>
+      <if test="gxsj != null" >
+        GXSJ,
+      </if>
+      <if test="xxXqxxId != null" >
+        XX_XQXX_ID,
+      </if>
+      <if test="lrr != null" >
+        LRR,
+      </if>
+      <if test="lrsj != null" >
+        LRSJ,
+      </if>
+      <if test="njjs != null" >
+        NJJS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xxNjxxId != null" >
+        #{xxNjxxId,jdbcType=VARCHAR},
+      </if>
+      <if test="xxJbxxId != null" >
+        #{xxJbxxId,jdbcType=VARCHAR},
+      </if>
+      <if test="njmc != null" >
+        #{njmc,jdbcType=VARCHAR},
+      </if>
+      <if test="rxnf != null" >
+        #{rxnf,jdbcType=VARCHAR},
+      </if>
+      <if test="jyjd != null" >
+        #{jyjd,jdbcType=VARCHAR},
+      </if>
+      <if test="xjnjdm != null" >
+        #{xjnjdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xz != null" >
+        #{xz,jdbcType=VARCHAR},
+      </if>
+      <if test="njzt != null" >
+        #{njzt,jdbcType=VARCHAR},
+      </if>
+      <if test="njsj != null" >
+        #{njsj,jdbcType=VARCHAR},
+      </if>
+      <if test="gxr != null" >
+        #{gxr,jdbcType=VARCHAR},
+      </if>
+      <if test="gxsj != null" >
+        #{gxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="xxXqxxId != null" >
+        #{xxXqxxId,jdbcType=VARCHAR},
+      </if>
+      <if test="lrr != null" >
+        #{lrr,jdbcType=VARCHAR},
+      </if>
+      <if test="lrsj != null" >
+        #{lrsj,jdbcType=VARCHAR},
+      </if>
+      <if test="njjs != null" >
+        #{njjs,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tiye.IntelligentClass.model.XX_NJXX" >
+    update XX_NJXX
+    <set >
+      <if test="xxJbxxId != null" >
+        XX_JBXX_ID = #{xxJbxxId,jdbcType=VARCHAR},
+      </if>
+      <if test="njmc != null" >
+        NJMC = #{njmc,jdbcType=VARCHAR},
+      </if>
+      <if test="rxnf != null" >
+        RXNF = #{rxnf,jdbcType=VARCHAR},
+      </if>
+      <if test="jyjd != null" >
+        JYJD = #{jyjd,jdbcType=VARCHAR},
+      </if>
+      <if test="xjnjdm != null" >
+        XJNJDM = #{xjnjdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xz != null" >
+        XZ = #{xz,jdbcType=VARCHAR},
+      </if>
+      <if test="njzt != null" >
+        NJZT = #{njzt,jdbcType=VARCHAR},
+      </if>
+      <if test="njsj != null" >
+        NJSJ = #{njsj,jdbcType=VARCHAR},
+      </if>
+      <if test="gxr != null" >
+        GXR = #{gxr,jdbcType=VARCHAR},
+      </if>
+      <if test="gxsj != null" >
+        GXSJ = #{gxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="xxXqxxId != null" >
+        XX_XQXX_ID = #{xxXqxxId,jdbcType=VARCHAR},
+      </if>
+      <if test="lrr != null" >
+        LRR = #{lrr,jdbcType=VARCHAR},
+      </if>
+      <if test="lrsj != null" >
+        LRSJ = #{lrsj,jdbcType=VARCHAR},
+      </if>
+      <if test="njjs != null" >
+        NJJS = #{njjs,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where XX_NJXX_ID = #{xxNjxxId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tiye.IntelligentClass.model.XX_NJXX" >
+    update XX_NJXX
+    set XX_JBXX_ID = #{xxJbxxId,jdbcType=VARCHAR},
+    NJMC = #{njmc,jdbcType=VARCHAR},
+    RXNF = #{rxnf,jdbcType=VARCHAR},
+    JYJD = #{jyjd,jdbcType=VARCHAR},
+    XJNJDM = #{xjnjdm,jdbcType=VARCHAR},
+    XZ = #{xz,jdbcType=VARCHAR},
+    NJZT = #{njzt,jdbcType=VARCHAR},
+    NJSJ = #{njsj,jdbcType=VARCHAR},
+    GXR = #{gxr,jdbcType=VARCHAR},
+    GXSJ = #{gxsj,jdbcType=VARCHAR},
+    XX_XQXX_ID = #{xxXqxxId,jdbcType=VARCHAR},
+    LRR = #{lrr,jdbcType=VARCHAR},
+    LRSJ = #{lrsj,jdbcType=VARCHAR},
+    NJJS = #{njjs,jdbcType=LONGVARBINARY}
+    where XX_NJXX_ID = #{xxNjxxId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tiye.IntelligentClass.model.XX_NJXX" >
+    update XX_NJXX
+    set XX_JBXX_ID = #{xxJbxxId,jdbcType=VARCHAR},
+    NJMC = #{njmc,jdbcType=VARCHAR},
+    RXNF = #{rxnf,jdbcType=VARCHAR},
+    JYJD = #{jyjd,jdbcType=VARCHAR},
+    XJNJDM = #{xjnjdm,jdbcType=VARCHAR},
+    XZ = #{xz,jdbcType=VARCHAR},
+    NJZT = #{njzt,jdbcType=VARCHAR},
+    NJSJ = #{njsj,jdbcType=VARCHAR},
+    GXR = #{gxr,jdbcType=VARCHAR},
+    GXSJ = #{gxsj,jdbcType=VARCHAR},
+    XX_XQXX_ID = #{xxXqxxId,jdbcType=VARCHAR},
+    LRR = #{lrr,jdbcType=VARCHAR},
+    LRSJ = #{lrsj,jdbcType=VARCHAR}
+    where XX_NJXX_ID = #{xxNjxxId,jdbcType=VARCHAR}
+  </update>
+
+
+
+
+  <select id="getById" resultMap="BaseResultMap1" parameterType="string">
+    select  * from XX_NJXX where  XX_NJXX_ID=#{xxNjxxId}
+  </select>
+</mapper>

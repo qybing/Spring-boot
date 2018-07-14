@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>资源平台后台管理系统</title>
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="js/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="css/plugins/iCheck/custom.css">
+    <link rel="stylesheet" href="css/plugins/jqgrid/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/demo/laypage.css">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 ">
+            <div class=" form form-inline"  >
+                <div class="form-group">
+                    <label class="control-label">标题:</label>
+                    <input type="text" name="stitle" class="form-control" placeholder="标题">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">副标题:</label>
+                    <input type="text" class="form-control" name="ssubtitle" placeholder="副标题">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">状态:</label>
+                    <select class="form-control" id="sstate">
+                        <option value="">全部</option>
+                        <option value="2">未发布</option>
+                        <option value="1">已发布</option>
+                        <option value="3">到期</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">时间范围:</label>
+                    <input type="text" id="dateStart" class="form-control" style="width: 110px">
+                    <span>-</span>
+                    <input type="text" class="form-control" id="dateEnd"  style="width: 110px">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="button" id="search"><i class="fa fa-search-plus"></i>查询</button>
+                    <button class="btn btn-default" type="button" id="reset"><i class="fa fa-trash-o"></i>重置</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-sm-12">
+            <button class="btn btn-primary " data-toggle="modal" data-target="#message">
+                <i class="fa fa-plus"></i>
+                <span>新增通知</span>
+            </button>
+            <span class="btnGroup">
+                <button class="btn btn-danger " data-type="deleteMore">
+                <i class="fa fa-trash-o"></i>
+                <span>删除</span>
+            </button>
+            </span>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div id="pTable" style="min-width: 1080px;">
+                <table class="layui-hide" id="layui_table_id" lay-filter="test">
+                </table>
+                <div id="laypage"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="barDemo">
+    <button class="btn btn-success btn-sm" lay-event="edit" data-toggle="modal" data-target="#message">编辑</button>
+    <button class="btn btn-danger btn-sm" lay-event="delete">删除</button>
+</script>
+<!-----------添加弹窗-------->
+<div class="modal fade" id="message">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">添加通知</h4>
+            </div>
+            <div class="modal-body">
+                <div id="form1" class="form-horizontal" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"><span class="text-danger">*</span> 标题:</label>
+                        <div class="col-sm-6"><input type="text" name="title" class="form-control"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">副标题:</label>
+                        <div class="col-sm-6"><input type="text" name="subTitle" class="form-control"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"><span class="text-danger">*</span> 内容</label>
+                        <div class="col-sm-6"><textarea name="content" id="content" cols="20" rows="8"  class="form-control" style="resize: none"></textarea></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 col-xs-3 control-label">封面:</label>
+                        <div class="col-sm-6 col-xs-9">
+                            <div id="upload1" style="width: 100px;height: 100px;border: 1px #ddd solid">
+                                <input type="file" name="fontCover" id="fileUpload "  accept="image/png, image/jpeg, image/gif, image/jpg">
+                                <img src="" id="imgView" alt=""style="width: 100px;height: 100px;">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="pubType" value="2">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">发布时间:</label>
+                        <div class="col-sm-6"><input type="text" name="publishTime" class="form-control"  id="date2"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">发布天数:</label>
+                        <div class="col-sm-6"><input type="text" class="form-control" name="lastDay" id="num" placeholder="请输入数字"></div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary" type="button" id="test01" >提交</button>
+                        <button type="reset" class="btn btn-lg btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script src="js/plugins/jqgrid/i18n/grid.locale-cn.js"></script>
+<script src="js/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="js/plugins/layui/layui.js"></script>
+<script src="js/demo/School_notice.js"></script>
+</html>

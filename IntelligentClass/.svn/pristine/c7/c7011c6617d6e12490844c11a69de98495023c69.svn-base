@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.AssetsConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.AssetsConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="assetsId" property="assetsId" jdbcType="VARCHAR" />
+    <result column="xxJbxxId" property="xxJbxxId" jdbcType="VARCHAR" />
+    <result column="xxNjxxId" property="xxNjxxId" jdbcType="VARCHAR" />
+    <result column="xxBjxxId" property="xxBjxxId" jdbcType="VARCHAR" />
+    <result column="createTime" property="create_time" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="Assets" type="com.tiye.IntelligentClass.model.AssetsConfigEx">
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="assetsId" property="assetsId" jdbcType="VARCHAR" />
+    <result column="xxJbxxId" property="xxJbxxId" jdbcType="VARCHAR" />
+    <result column="xxNjxxId" property="xxNjxxId" jdbcType="VARCHAR" />
+    <result column="xxBjxxId" property="xxBjxxId" jdbcType="VARCHAR" />
+    <association property="xxJbxx" javaType="com.tiye.IntelligentClass.model.XX_JBXX">
+       <id column="XX_JBXX_ID" property="xxJbxxId" jdbcType="VARCHAR"/>
+       <result column="XXMC" property="xxmc" jdbcType="VARCHAR"/>
+    </association>
+    <association property="xxNjxx" javaType="com.tiye.IntelligentClass.model.XX_NJXX">
+      <id column="XX_NJXX_ID" property="xxNjxxId" jdbcType="VARCHAR"/>
+      <result column="NJMC" property="njmc" jdbcType="VARCHAR"/>
+    </association>
+    <association property="xxBjxx" javaType="com.tiye.IntelligentClass.model.XX_BJXX">
+      <id column="XX_BJXX_ID" property="xxBjxxId" jdbcType="VARCHAR"/>
+      <result column="BJMC" property="bjmc" jdbcType="VARCHAR"/>
+      <result column="BH" property="bh" jdbcType="DECIMAL"/>
+    </association>
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, assetsId, xxJbxxId, xxNjxxId,xxBjxxId, create_time
+  </sql>
+
+  <select id="getXNB" resultMap="Assets" parameterType="string">
+    select a.xxJbxxId,xx.XXMC,a.xxNjxxId,nj.NJMC,a.xxBjxxId,bj.BJMC,bj.BH
+    from assets_config a,XX_JBXX  xx,XX_NJXX nj,XX_BJXX bj
+    where a.xxJbxxId=xx.XX_JBXX_ID and a.xxNjxxId=nj.XX_NJXX_ID and a.xxBjxxId=bj.XX_BJXX_ID  and a.assetsId=#{assetsId,jdbcType=VARCHAR}
+  </select>
+
+
+  <insert id="insert" parameterType="com.tiye.IntelligentClass.model.AssetsConfig" >
+    insert into
+    assets_config (assetsId, xxJbxxId, xxNjxxId,xxBjxxId, create_time)
+    VALUES (#{assetsId},#{xxJbxxId},#{xxNjxxId},#{xxBjxxId}, NOW())
+  </insert>
+
+    <select id="getbyAssetsid" resultMap="BaseResultMap" parameterType="string">
+    select  * from assets_config where  assetsId=#{assetsId}
+  </select>
+
+    <update id="update" parameterType="com.tiye.IntelligentClass.model.AssetsConfig">
+    update assets_config t set t.xxJbxxId=#{xxJbxxId},t.xxNjxxId=#{xxNjxxId},t.xxBjxxId=#{xxBjxxId} WHERE t.id=#{id}
+    </update>
+
+
+</mapper>

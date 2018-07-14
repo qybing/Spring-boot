@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.EbNoticeMapper" >
+  <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.EbNotice" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="sub_title" property="subTitle" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="pic_path" property="picPath" jdbcType="VARCHAR" />
+    <result column="pub_type" property="pubType" jdbcType="VARCHAR" />
+    <result column="xx" property="xx" jdbcType="VARCHAR" />
+    <result column="nj" property="nj" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="last_day" property="lastDay" jdbcType="INTEGER" />
+    <result column="publish_time" property="publishTime" jdbcType="VARCHAR" />
+    <result column="over_time" property="overTime" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, sub_title, content, pic_path, pub_type, xx, nj, create_time, publish_time,
+    last_day,over_time,is_del
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from eb_notice
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByTitle" resultMap="BaseResultMap" parameterType="com.tiye.IntelligentClass.model.EbNotice">
+    select
+    <include refid="Base_Column_List" />
+    from eb_notice
+    where title = #{title,jdbcType=VARCHAR}
+    <if test="id!=null">
+      <![CDATA[and id <> #{id}]]>
+    </if>
+  </select>
+
+  <sql id="basic_list_where">
+    where is_del=0
+    <if test="title != null and title!=''">
+        and  title like '%${title}%'
+    </if>
+    <if test="subTitle != null and subTitle!=''">
+      and  sub_title like '%${subTitle}%'
+    </if>
+    <if test="pubType != null and pubType!=''">
+      and pub_type = #{pubType}
+    </if>
+    <!--已发布-->
+    <if test="status != null and status=='1'.toString()">
+      <![CDATA[
+          and STR_TO_DATE(over_time, '%Y-%m-%d') < DATE_FORMAT(CURDATE(),'%Y-%m-%d')
+	  ]]>
+    </if>
+    <!--未发布-->
+    <if test="status != null and status=='2'.toString()">
+      <![CDATA[
+		  and STR_TO_DATE(over_time, '%Y-%m-%d') > DATE_FORMAT(CURDATE(),'%Y-%m-%d')
+	  ]]>
+    </if>
+    <!--到期-->
+    <if test="status != null and status=='3'.toString()">
+      <![CDATA[
+		  and STR_TO_DATE(over_time, '%Y-%m-%d') = DATE_FORMAT(CURDATE(),'%Y-%m-%d')
+	  ]]>
+    </if>
+    <if test="startTime != null and startTime!=''">
+      <![CDATA[
+		  and STR_TO_DATE(create_time, '%Y-%m-%d %H:%i:%s') >= STR_TO_DATE(#{startTime}, '%Y-%m-%d %H:%i:%s')
+	  ]]>
+    </if>
+    <if test="endTime!=null and endTime!=''">
+      <![CDATA[
+		  and STR_TO_DATE(create_time, '%Y-%m-%d %H:%i:%s') <= STR_TO_DATE(#{endTime}, '%Y-%m-%d %H:%i:%s')
+	  ]]>
+    </if>
+  </sql>
+  <select id="getNoticeListCount" parameterType="map" resultType="java.lang.Integer">
+      select
+        count(*)
+      from eb_notice
+      <include refid="basic_list_where"/>
+  </select>
+
+  <select id="getNoticeListData" parameterType="map" resultMap="BaseResultMap">
+      select
+        <include refid="Base_Column_List"/>
+        ,
+      case
+        when <![CDATA[ STR_TO_DATE(publish_time, '%Y-%m-%d')> DATE_FORMAT(CURDATE(),'%Y-%m-%d')]]> then '2'
+        when <![CDATA[ STR_TO_DATE(over_time, '%Y-%m-%d')> DATE_FORMAT(CURDATE(),'%Y-%m-%d') and  STR_TO_DATE(publish_time, '%Y-%m-%d')<= DATE_FORMAT(CURDATE(),'%Y-%m-%d') then '1']]>
+        when  <![CDATA[ STR_TO_DATE(over_time, '%Y-%m-%d')<=DATE_FORMAT(CURDATE(),'%Y-%m-%d') ]]> then '3'
+      else '0'
+      end as noticeStatus
+      from eb_notice
+      <include refid="basic_list_where"/>
+      order by create_time DESC
+      limit ${start},${rows}
+  </select>
+  <select id="getPcNotices"  resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List"/>
+    from eb_notice
+    where is_del=0
+    <![CDATA[ and DATE_FORMAT(CURDATE(),'%Y-%m-%d') >= STR_TO_DATE(publish_time, '%Y-%m-%d')]]>
+    <![CDATA[ and DATE_FORMAT(CURDATE(),'%Y-%m-%d') <STR_TO_DATE(over_time, '%Y-%m-%d')]]>
+    and nj like '%${xxNjxxId}%'
+  </select>
+
+  <insert id="insert" parameterType="com.tiye.IntelligentClass.model.EbNotice" useGeneratedKeys="true" keyProperty="id" >
+    insert into eb_notice (
+      title,
+      sub_title,
+      content,
+      pic_path,
+      pub_type,
+      xx,
+      nj,
+      create_time,
+      publish_time,
+      over_time,
+      is_del,
+      last_day
+    ) values (
+      #{title,jdbcType=VARCHAR},
+      #{subTitle,jdbcType=VARCHAR},
+      #{content,jdbcType=VARCHAR},
+      #{picPath,jdbcType=VARCHAR},
+      #{pubType,jdbcType=VARCHAR},
+      #{xx,jdbcType=VARCHAR},
+      #{nj,jdbcType=VARCHAR},
+      #{createTime,jdbcType=VARCHAR},
+      #{publishTime,jdbcType=VARCHAR},
+      #{overTime,jdbcType=VARCHAR},
+      #{isDel,jdbcType=BIT},
+      #{lastDay,jdbcType=INTEGER}
+    )
+  </insert>
+
+  <update id="falseDelByKey" parameterType="java.lang.Long">
+    update eb_notice
+    set is_del=1
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="falseDelByKeys" parameterType="long[]">
+      update eb_notice
+      set is_del=1
+      where id in
+    <foreach collection="array" item="arr" index="no" open="("
+             separator="," close=")">
+      #{arr}
+    </foreach>
+  </update>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.tiye.IntelligentClass.model.EbNotice" >
+    update eb_notice
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null" >
+        sub_title = #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="picPath != null" >
+        pic_path = #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pubType != null" >
+        pub_type = #{pubType,jdbcType=VARCHAR},
+      </if>
+      <if test="xx != null" >
+        xx = #{xx,jdbcType=VARCHAR},
+      </if>
+      <if test="nj != null" >
+        nj = #{nj,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="overTime != null" >
+        over_time = #{overTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="lastDay != null" >
+        last_day = #{lastDay,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.ClassHonorMapper" >
+  <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.ClassHonor" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="xx" property="xx" jdbcType="VARCHAR" />
+    <result column="nj" property="nj" jdbcType="VARCHAR" />
+    <result column="bj" property="bj" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, pic, xx, nj, bj, is_del, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from class_honor
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <sql id="basic_where">
+      where is_del=0
+      <if test="xx!=null and xx!=''">
+        and xx=#{xx}
+      </if>
+      <if test="nj!=null and nj!=''">
+        and nj=#{nj}
+      </if>
+      <if test="bj!=null and bj!=''">
+        and bj=#{bj}
+      </if>
+      <if test="title!=null and title!=''">
+        and title like '%${title}%'
+      </if>
+      <if test="startTime != null and startTime!=''">
+        <![CDATA[
+            and STR_TO_DATE(create_time, '%Y-%m-%d %H:%i:%s') >= STR_TO_DATE(#{startTime}, '%Y-%m-%d %H:%i:%s')
+        ]]>
+      </if>
+      <if test="endTime!=null and endTime!=''">
+          <![CDATA[
+              and STR_TO_DATE(create_time, '%Y-%m-%d %H:%i:%s') <= STR_TO_DATE(#{endTime}, '%Y-%m-%d %H:%i:%s')
+          ]]>
+      </if>
+  </sql>
+  <select id="getHonorCount" resultType="java.lang.Integer" parameterType="map">
+      select
+        count(*)
+      from class_honor
+      <include refid="basic_where"/>
+  </select>
+  <select id="getHonorList" resultMap="BaseResultMap" parameterType="map">
+    select
+      <include refid="Base_Column_List"/>
+    from class_honor
+    <include refid="basic_where"/>
+    order by create_time DESC
+    limit ${start},${rows}
+  </select>
+  <select id="getHonorPc" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from class_honor
+    where is_del=0
+    <if test="xxJbxxId!=null and xxJbxxId!=''">
+      and xx=#{xxJbxxId}
+    </if>
+    <if test="xxNjxxId!=null and xxNjxxId!=''">
+      and nj=#{xxNjxxId}
+    </if>
+    <if test="xxBjxxId!=null and xxBjxxId!=''">
+      and bj=#{xxBjxxId}
+    </if>
+    order by create_time DESC
+  </select>
+  <insert id="insert" parameterType="com.tiye.IntelligentClass.model.ClassHonor" useGeneratedKeys="true" keyProperty="id" >
+    insert into class_honor (
+      title,
+      pic,
+      xx,
+      nj,
+      bj,
+      is_del,
+      create_time
+    ) values (
+      #{title,jdbcType=VARCHAR},
+      #{pic,jdbcType=VARCHAR},
+      #{xx,jdbcType=VARCHAR},
+      #{nj,jdbcType=VARCHAR},
+      #{bj,jdbcType=VARCHAR},
+      #{isDel,jdbcType=BIT},
+      #{createTime,jdbcType=VARCHAR}
+    )
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.tiye.IntelligentClass.model.ClassHonor" >
+    update class_honor
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="xx != null" >
+        xx = #{xx,jdbcType=VARCHAR},
+      </if>
+      <if test="nj != null" >
+        nj = #{nj,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null" >
+        bj = #{bj,jdbcType=VARCHAR},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="falseDesById" parameterType="java.lang.Long">
+      update class_honor
+      set is_del=1
+      where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="falseDelByIds" parameterType="long[]">
+    update class_honor
+    set is_del=1
+    where id in
+    <foreach collection="array" item="arr" index="no" open="("
+             separator="," close=")">
+      #{arr}
+    </foreach>
+  </update>
+</mapper>

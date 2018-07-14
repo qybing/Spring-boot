@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>资源平台后台管理系统</title>
+    <!--[if lt IE 8]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" href="js/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="css/demo/webuploader-demo.min.css">
+    <link rel="stylesheet" href="css/plugins/iCheck/custom.css">
+    <link rel="stylesheet" href="css/plugins/jqgrid/ui.jqgrid.css">
+    <link rel="stylesheet" href="css/demo/laypage.css">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+<body>
+<div class="login-wrap container" style="width: 300px;margin: 70px auto;">
+    <div class="row">
+        <div class="">
+            <div class="login-box">
+                <div class="form form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <input type="text" class="form-control" id="account" autocomplete="false" name="
+                            oginName" placeholder="请输入账号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                            <input type="password" autocomplete="false" class="form-control" id="password" name="password" placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" id="denglu" >登陆</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a href="#" class="pull-right">忘记密码</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.5"></script>
+<script src="js/plugins/layui/layui.js"></script>
+<script>
+layui.use(['form','jquery','layer'],function () {
+    var form=layui.form,
+        $=layui.jquery,
+        layer=layui.layer;
+    $("#denglu").click(function(){
+        $.ajax({
+            type:'GET',
+            url:'back/user/login',
+            data:{
+                loginName:$("#account").val(),
+                password:$("#password").val()
+            },
+            success:function (res) {
+                console.log(res)
+                if(res.code==0){
+                    console.log(window.location.host+'/index_v.html')
+                    window.location.href="http://"+ window.location.host+'/index_v.html'
+                }else{
+                    layer.msg(res.msg)
+                }
+            }
+        })
+    })
+    /*console.log(window.location.hash)
+    console.log(window.location.port)
+    console.log(window.location.href)
+    console.log(window.location.host)*/
+
+
+
+
+
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

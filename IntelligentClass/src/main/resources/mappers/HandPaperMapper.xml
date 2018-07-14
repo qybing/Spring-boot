@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiye.IntelligentClass.dao.HandPaperMapper" >
+  <resultMap id="BaseResultMap" type="com.tiye.IntelligentClass.model.HandPaper" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="pic_path" property="picPath" jdbcType="VARCHAR" />
+    <result column="xx" property="xx" jdbcType="VARCHAR" />
+    <result column="nj" property="nj" jdbcType="VARCHAR" />
+    <result column="bj" property="bj" jdbcType="VARCHAR" />
+    <result column="del" property="del" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, content, pic_path,author, xx, nj, bj, del, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from hand_paper
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <sql id="basic_where">
+    where del=0
+    <if test="xxJbxxId!=null and xxJbxxId!=''">
+      and xx=#{xxJbxxId}
+    </if>
+    <if test="xxNjxxId!=null and xxNjxxId!=''">
+      and nj=#{xxNjxxId}
+    </if>
+    <if test="xxBjxxId!=null and xxBjxxId!=''">
+      and bj=#{xxBjxxId}
+    </if>
+    <if test="startTime != null and startTime!=''">
+      <![CDATA[
+		  and STR_TO_DATE(create_time, '%Y-%m-%d %H:%i:%s') >= STR_TO_DATE(#{startTime}, '%Y-%m-%d %H:%i:%s')
+	  ]]>
+    </if>
+    <if test="endTime!=null and endTime!=''">
+      <![CDATA[
+		  and STR_TO_DATE(create_time, '%Y-%m-%d %H:%i:%s') <= STR_TO_DATE(#{endTime}, '%Y-%m-%d %H:%i:%s')
+	  ]]>
+    </if>
+    <if test="title != null and title!=''">
+      and  title like '%${title}%'
+    </if>
+  </sql>
+  <select id="getHandPaperCount" parameterType="map" resultType="java.lang.Integer">
+    select
+      count(*)
+    from hand_paper
+    <include refid="basic_where"/>
+  </select>
+  <select id="getHandPaperList" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from hand_paper
+    <include refid="basic_where"/>
+    order by create_time DESC
+    limit ${start},${rows}
+  </select>
+  <insert id="insert" parameterType="com.tiye.IntelligentClass.model.HandPaper" useGeneratedKeys="true" keyProperty="id" >
+    insert into hand_paper (
+      title,
+      content,
+      pic_path,
+      author,
+      xx,
+      nj,
+      bj,
+      del,
+      create_time
+    ) values (
+      #{title,jdbcType=VARCHAR},
+      #{content,jdbcType=VARCHAR},
+      #{picPath,jdbcType=VARCHAR},
+      #{author,jdbcType=VARCHAR},
+      #{xx,jdbcType=VARCHAR},
+      #{nj,jdbcType=VARCHAR},
+      #{bj,jdbcType=VARCHAR},
+       #{del,jdbcType=BIT},
+      #{createTime,jdbcType=VARCHAR}
+    )
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.tiye.IntelligentClass.model.HandPaper" >
+    update hand_paper
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="picPath != null" >
+        pic_path = #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="xx != null" >
+        xx = #{xx,jdbcType=VARCHAR},
+      </if>
+      <if test="nj != null" >
+        nj = #{nj,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null" >
+        bj = #{bj,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null" >
+        del = #{del,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="falseDelById" parameterType="java.lang.Long">
+     update hand_paper
+    set del=1
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="falseDelByIds" parameterType="long[]">
+    update hand_paper
+    set del=1
+    where id in
+    <foreach collection="array" item="arr" index="no" open="("
+             separator="," close=")">
+      #{arr}
+    </foreach>
+  </update>
+</mapper>
