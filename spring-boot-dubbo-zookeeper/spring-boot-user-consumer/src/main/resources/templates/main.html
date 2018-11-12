@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>用户管理后台</title>
+    <!--<link rel="stylesheet" href="/css/bootstrap.min.css"/>-->
+    <script src="/js/jquery.min.js"></script>
+    <!--<script src="/js/bootstrap.min.js"></script>-->
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.staticfile.org/angular.js/1.7.0/angular.min.js"></script>
+    <script src="https://cdn.staticfile.org/angular.js/1.7.0/angular-route.min.js"></script>
+    <script src="https://cdn.bootcss.com/angular-ui-router/1.0.20/angular-ui-router.min.js"></script>
+    <script src="/js/app.js"></script>
+</head>
+<body ng-app="helloworld" ng-controller="myCtrl">
+<div class="container">
+<!--    <div class="row">
+            <div class="col-md-12"><h1>用户管理</h1></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 col-md-offset-11">
+            <button type="button" class="btn btn-primary" id="newAdd">新增</button>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-md-12">
+                    <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>名字</th>
+                        <th>年龄</th>
+                        <th>性别</th>
+                        <th>电话</th>
+                        <th>邮箱</th>
+                        <th>创建日期</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr class="active" ng-repeat="person in persons">
+                        <td >{{person.name}}</td>
+                        <td >{{person.age}}</td>
+                        <td >{{person.sex}}</td>
+                        <td >{{person.mobile}}</td>
+                        <td >{{<per></per>son.email}}</td>
+                        <td >{{person.create_DATE | date:'yyyy-MM-dd'}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary"  ui-sref=".update">修改</button>
+                            <button type="button" class="btn btn-primary" ng-click="delete(person.id)">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+           当前{{pageNum}}页，总共{{lastPage}}页，总共{{total}}记录
+        </div>
+        <div class="col-md-6">
+            <ul class="pagination pagination-lg" align="center" ng-repeat="navigatepageNum in navigatepageNums">
+                <li ng-if="navigatepageNum ==pageNum" class="active"><a href="#" >{{navigatepageNum}}</a></li>
+                <li ng-if="navigatepageNum !=pageNum"><a ng-click="pageInfo(navigatepageNum)">{{navigatepageNum}}</a></li>
+            </ul>
+
+        </div>
+    </div>-->
+    <div data-ui-view=""></div>
+</div>
+<script>
+    var app = angular.module('helloworld', ['ui.router']);
+    app.controller('myCtrl', function($scope, $http) {
+        $scope.pageNum=1;
+        $scope.lastPage=1;
+        $scope.total=1;
+        $scope.navigatepageNums=1;
+        $scope.pageInfo = function pageData(pageNum) {
+            $http.get("getPerson/"+pageNum)
+                .then(function (response) {
+                    $scope.persons = response.data.list;
+                    $scope.navigatepageNums = response.data.navigatepageNums;
+                    $scope.pageNum = response.data.pageNum;
+                    $scope.lastPage = response.data.lastPage;
+                    $scope.total = response.data.total;
+                });
+        };
+        $scope.delete = function deleteData(id) {
+            $http.get("delete/"+id)
+                .then(function (response) {
+                    history.go(0);
+                });
+        };
+        $scope.pageInfo(1);
+        // $scope.update = function updateData(id) {
+        //
+        // };
+    });
+
+    app.config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider
+            .when("", "/main")
+            .when("/", "/main");
+        $stateProvider
+            .state("main", {
+                url: '/main',
+                templateUrl: 'index.html'
+            })
+            .state("main.update", {
+                url: "/update",
+                templateUrl: "update.html"
+            })
+    });
+</script>
+
+</body>
+</html>

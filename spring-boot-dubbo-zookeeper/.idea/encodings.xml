@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer/src/main/resources/static/css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer/src/main/resources/static/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer/src/main/resources/static/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer/src/main/resources/static/js/css/bootstrap.min.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer/src/main/resources/static/js/css/jquery.min.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer/src/main/resources/static/js/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer/src/main/resources/static/static" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-consumer/src/main/resources/static/static/js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-user-provider" charset="UTF-8" />
+    <file url="file://F:/IDEA/spring-boot-dubbo-zookeeper/spring-boot-user-consumer" charset="UTF-8" />
+    <file url="file://F:/IDEA/spring-boot-dubbo-zookeeper/spring-boot-user-interface" charset="UTF-8" />
+    <file url="file://F:/IDEA/spring-boot-dubbo-zookeeper/spring-boot-user-provider" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>
